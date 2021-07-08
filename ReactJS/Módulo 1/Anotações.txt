@@ -121,3 +121,41 @@ module.exports = {
 }
 
 Transforma-se o preset em uma array de duas posições onde a primeira será o preset e a segunda posição o runtime, que definirá automaticamente a leitura do react.
+
+-------------------------------------------------------------------------------------------
+Aula 05 - Servindo HTML estático
+
+Se caso ocorra a mudança do nome do arquivo de configuração 'bundle.js' ele não vai ser lido, então para resolver esse problema se utiliza um plugin do webpack para injetar essa configuração no html.
+
+yarn add html-webpack-plugin -D
+
+A configuração fica da seguinte forma:
+
+const path = require('path')
+**const HtmlWebpackPlugin = require('html-webpack-plugin')**
+
+module.exports = {
+  mode: 'development',
+  entry: path.resolve(__dirname, 'src', 'index.jsx'),
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js'
+  },
+  resolve: {
+    extensions: ['.js', '.jsx']
+  },
+  **plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, 'public', 'index.html')
+    })
+  ],**
+  module: {
+    rules: [
+      {
+        test: /\.jsx$/,
+        exclude: /node_modules/,
+        use: 'babel-loader'
+      }
+    ],
+  }
+}
