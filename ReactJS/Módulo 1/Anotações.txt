@@ -103,3 +103,21 @@ module.exports = {
     ],
   }
 }
+
+-------------------------------------------------------------------------------------------
+Aula 04 - Estrutura do ReactJS
+
+O render() é uma função que renderiza um elemento na tela. O primeiro parâmetro é o que será renderizado em tela e o segundo é dentro de qual elemento será renderizado a informação.
+
+A partir da versão 17 do react não é mais necessário importar o react em todo o projeto, apenas onde será utilizado. Para resolver problemas de leitura se adiciona no babel uma configuração, ficará da seguinte forma:
+
+module.exports = {
+  presets: [
+    '@babel/preset-env',
+    ['@babel/preset-react', {
+      runtime: 'automatic'
+    }]
+  ]
+}
+
+Transforma-se o preset em uma array de duas posições onde a primeira será o preset e a segunda posição o runtime, que definirá automaticamente a leitura do react.
