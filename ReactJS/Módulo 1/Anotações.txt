@@ -242,3 +242,27 @@ module.exports = {
 
 Existem dois tipos de source maps o de desenvolvimento e o de produção.
 
+-------------------------------------------------------------------------------------------
+Aula 08 - Ambiente dev e produção
+
+Para configurar o webpack sendo modo de desenvolvimento e produção se adiciona o seguinte comando na configuração do webpack dentro do module:
+
+const isDevelopment = process.env.NODE_ENV !== 'production'
+
+module.exports = {
+  mode: isDevelopment ? 'development' : 'production',
+  devtool: isDevelopment ? 'eval-source-map' : 'source-map',
+}
+
+para criar o NODE_ENV deve-se instalar o pacote :
+
+yarn add cross-env -D
+
+Que vai servir para definir variáveis ambientes independente do OS da pessoa.
+
+Se configura o package.json adicionando abaixo da license um script:
+
+"scripts": {
+    "dev": "webpack serve",
+    "build": "cross-env NODE_ENV=production webpack"
+  },
