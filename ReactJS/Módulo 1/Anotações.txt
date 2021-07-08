@@ -203,3 +203,42 @@ agora basta colocar no console:
 
 yarn webpack serve
 
+-------------------------------------------------------------------------------------------
+Aula 07 - Utilizando source maps
+
+O source map nada mais é que uma forma de se visualizar o nosso código em desenvolvimento sem estár desorganizado ( como o bundle.js). 
+
+Se adiciona no arquivo de configuração do Webpack abaixo do mode:
+
+module.exports = {
+  mode: 'development',
+  **devtool: 'eval-source-map',**
+  entry: path.resolve(__dirname, 'src', 'index.jsx'),
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js'
+  },
+  resolve: {
+    extensions: ['.js', '.jsx']
+  },
+  devServer: {
+    contentBase: path.resolve(__dirname, 'public')
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, 'public', 'index.html')
+    })
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.jsx$/,
+        exclude: /node_modules/,
+        use: 'babel-loader'
+      }
+    ],
+  }
+}
+
+Existem dois tipos de source maps o de desenvolvimento e o de produção.
+
