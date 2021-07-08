@@ -19,3 +19,30 @@ Estrutura de pastas da aplicação:
 
 src => Onde fica todo o código da aplicação.
 puclic => Onde fica arquivos e assets que são acessados por meios externos da aplicação.
+
+-------------------------------------------------------------------------------------------
+Aula 02 - Configuração do Babel
+
+Babel serve para converter o código para que todos os browsers e todo o ambiente da aplicação consiga entender todos os códigos. 
+
+Para instalar o babel na sua aplicação react se utiliza o seguinte comando:
+
+yarn add @babel/core @babel/cli @babel/preset-env -D 
+
+O -D é para definir como dependência de desenvolvimento e o contúdo não estará disponível quando a aplicação for ao ar. 
+
+Após a instalação deve-se criar um arquivo chamado => babel.config.js onde será exportado as configurações do babel.
+
+Para traduzir um arquivo se utiliza o seguinte comando:
+
+yarn babel src/index.js -o dist/bundle.js => conversão padrão de um arquivo js para babel.
+
+Primeiro se diz onde está o arquivo o "-o" significa o que será gerado na saída e por fim o diretório e nome do arquivo traduzido.
+
+Para o Babel entender a arquitetura de código React é necessário instalar mais 1 biblioteca:
+
+yarn add @babel/preset-react -D 
+
+Após se importa dentro do arquivo do babel.config.js
+
+Com isso o Babel agora vai entender toda as importações de html dentro do js.
