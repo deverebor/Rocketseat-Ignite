@@ -1,0 +1,21 @@
+Aula 01 - Criando estrutura do projeto
+
+Bibliotecas instaladas nessa aula para o projeto:
+react;
+react-dom;
+
+
+Primeira coisa que se faz em qualquer projeto que se utiliza JavaScript, sempre se inicializa o repositório criando o package.json existem algumas formas de se fazer isso são elas:
+
+yarn init -y
+
+ou 
+
+npm init -y
+
+O package.json é onde se armazena as informações principais do projeto, ou seja dependências de terceiros, nome do projeto, versão, licença e etc. 
+
+Estrutura de pastas da aplicação:
+
+src => Onde fica todo o código da aplicação.
+puclic => Onde fica arquivos e assets que são acessados por meios externos da aplicação.
