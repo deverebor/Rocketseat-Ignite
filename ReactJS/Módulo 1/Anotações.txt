@@ -46,3 +46,60 @@ yarn add @babel/preset-react -D
 Após se importa dentro do arquivo do babel.config.js
 
 Com isso o Babel agora vai entender toda as importações de html dentro do js.
+O babel configurado ficará da seguinte maneira:
+
+module.exports = {
+  presets: [
+    '@babel/preset-env',
+    '@babel/preset-react'
+  ]
+}
+-------------------------------------------------------------------------------------------
+Aula 03 - Configuração do Webpack
+
+O Webpack manuseia o tratamento dos arquivos na minha aplicação para interpretação do browser.
+Para instalar o Webpack se utiliza o seguinte comando:
+
+yarn add webpack webpack-cli webpack-dev-server -D
+
+para configurar se cria primeiro um arquivo no diretório raiz da aplicação:
+
+webpack.config.js
+
+dentro da sua configuração, se define o arquivo principal da aplicação dentro do *entry:* onde se configura o arquivo de entrada.
+
+*Um jeito mais organizado de se puxar diretórios para configuração de arquivos é utilizando o path() já que de OS para OS as navegações entre arquivos são distintas.*
+
+Após configurar o entry se configura o output, que será o arquivo de saída do resultado. 
+
+Também é necessário configurar o module:{} que será o local onde ficará os arquivos que passaram pela filtragem e convertidos para as devidas extensões, dentro do modules se cria o rules:[] um array odne será armazenado as regras de verificação dos arquivos utilizando o test: que recebe uma expressão regular para fazer a verificação do arquivo. 
+
+Sempre que eu quiser definir que irá terminar com algo se usa o *$* na configuração do test.
+
+Para fazer a integração do babel e o webpack se utiliza uma biblioteca:
+
+yarn add babel-loader -D
+
+O webpack configurado ficará da seguinte maneira:
+
+const path = require('path')
+
+module.exports = {
+  entry: path.resolve(__dirname, 'src', 'index.jsx'),
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js'
+  },
+  resolve: {
+    extensions: ['.js', '.jsx']
+  },
+  module: {
+    rules: [
+      {
+        test: /\.jsx$/,
+        exclude: /node_modules/,
+        use: 'babel-loader'
+      }
+    ],
+  }
+}
