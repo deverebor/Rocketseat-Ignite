@@ -323,3 +323,4 @@ Sempre que for necessário adicionar uma variável do JavaScript no React se usa
 <h1>{variavel}</h1>
 
 --------------------------------------------------------------------------------------------
+Aula 12 - Propriedades no React
