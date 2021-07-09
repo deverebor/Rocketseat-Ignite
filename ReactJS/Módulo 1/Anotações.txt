@@ -590,3 +590,41 @@ Quando se usa um map() deve-se definir uma chave "key={}" ajudando acaso haja um
 --------------------------------------------------------------------------------------------
 Aula 19 - Fundamentos do TypeScript
 
+Os tipos são sempre definidos por letra maiúsculas ex:
+
+type **User** = {
+  name: string,
+  email: string,
+  address: {
+    city: string,
+    state?: string, => a "?" define que o elemento pode ter um valor ou não.
+  }
+}
+
+O TypeScript é utilizado para tipar variáveis assim tornando mais explicito os seus valores.
+
+Para se usar a tipagaem feita a cima é da seguinte maneira:
+
+type **User** = {
+  name: string,
+  email: string,
+  address: {
+    city: string,
+    state?: string, => a "?" define que o elemento pode ter um valor ou não.
+  }
+}
+
+function showWellcomeMesseger(**user: User**) {
+  return `Wellcome ${user.name}, your email is ${user.email}. Your city is ${user.city} and you state is ${user.state}`
+}
+
+showWellcomeMesseger({
+  name: 'Lucas Souza',
+  email: 'lucas@souza.com',
+  address: {
+    city: 'Salvador',
+    state: 'BA',
+  }
+})
+
+A tipagem é passada como parametro da função e na mesma é definida como user, ou seja, a tipagem User se tornou user e todo o atributo é passado para ela, assim podendo ser utilizado pela template string no nosso "return".
