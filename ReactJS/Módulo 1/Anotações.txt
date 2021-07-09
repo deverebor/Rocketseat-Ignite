@@ -534,3 +534,55 @@ useEffect(() => {
     .then(response => response.json()) => transformando a resposta dessa conexão em um JSON.
     .then(data => console.log(data)) => mostrando esses dados no console para debuggar.
   }, [repositories])
+
+--------------------------------------------------------------------------------------------
+  Aula 18 - Listando repositórios
+
+Toda vez que uma informação está armazenada no vetor e que será distribuído para cada elemento especifico faz da seguinte maneira no JSX:
+
+1- Maneira "errada"
+ <ul>
+      {repositories.forEach()}
+      <RepositoryItem repository={repository} />
+      <RepositoryItem repository={repository} />
+      <RepositoryItem repository={repository} />
+      <RepositoryItem repository={repository} />
+      </ul>
+
+2- Maneira correta
+ <ul>
+      {repositories.map(repository => {
+        <RepositoryItem repository={repository} />
+      })}
+      
+  </ul>
+
+Ao contrario do forEach o map vai percorrer todo o meu array e me retornar um valor especifico.
+
+Existem duas formas de se catalogar um dado dentro da array usando o map.()
+
+1- 
+
+ <ul>
+      {repositories.map(repository => {
+       return <RepositoryItem repository={repository} />
+      })}
+      
+  </ul>
+
+2- 
+ <ul>
+      {repositories.map(repository => (
+        <RepositoryItem repository={repository} />
+      ))}
+      
+  </ul>
+
+Quando o retorno é somente 1 elemento pode-se fazer da mesma linha:
+
+ <ul>
+      {repositories.map(repository => <RepositoryItem repository={repository} />)}
+      
+  </ul>
+
+Quando se usa um map() deve-se definir uma chave "key={}" ajudando acaso haja uma mudança de local.
