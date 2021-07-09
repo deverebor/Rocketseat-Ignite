@@ -628,3 +628,81 @@ showWellcomeMesseger({
 })
 
 A tipagem é passada como parametro da função e na mesma é definida como user, ou seja, a tipagem User se tornou user e todo o atributo é passado para ela, assim podendo ser utilizado pela template string no nosso "return".
+
+--------------------------------------------------------------------------------------------
+Aula 20 - TypeScript no ReactJS
+
+Primeiro se instala o TypeScript no projeto:
+
+yarn add typescript -D
+
+yarn add @types/react-dom -D
+
+yarn add @types/react -D
+
+logo ápos usa-se:
+
+yarn tsc --init
+
+Para inicializar o typescript na aplicação.
+
+**Para selecionar todos os elementos iguais no vscode se usa o cntrl+shift+L**
+
+Logo quando se utiliza o --init será criado um arquivo de configuração do typescript e por padrão toda aplicação React utiliza a configuração abaixo:
+
+{
+  "compilerOptions": {
+    "lib": ["DOM", "DOM.Iterable", "ESNext"], => Diz que será utilizado o DOM
+    "allowJs": true, => permite arquvios JS na aplicação.
+    "jsx": "react-jsx", => JavaScript no React
+    "noEmit": true, => Caso execulte o build da aplicação não emitir o código dela.
+    "strict": true, => Entrar no modo strict do JavaScript.
+    "moduleResolution": "node", => o modulo da aplicação é node
+    "resolveJsonModule": true, => importar arquivos json
+    "isolatedModules": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src"] => onde o código da aplicação se encontra.
+}
+
+Para fazer o Babel interpretar o TypeScript usa-se a biblioteca:
+
+yarn add @babel/preset-typescript -
+
+Em seguida se configura no babel.config o novo interpretador:
+
+module.exports = {
+  presets: [
+    '@babel/preset-env',
+    '@babel/preset-typescript',
+    ['@babel/preset-react', {
+      runtime: 'automatic'
+    }]
+  ]
+}
+
+E no webpack se configura da seguinte maneira:
+
+ rules: [
+      {
+        test: /\.(j|t)sx$/, => será JSX ou TSX
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            plugins: [
+              isDevelopment && require.resolve('react-refresh/babel')
+            ].filter(Boolean)
+          }
+        }
+      },
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        use: ['style-loader', 'css-loader', 'sass-loader']
+      }
+    ],
+
