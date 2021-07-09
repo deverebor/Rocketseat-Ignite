@@ -322,6 +322,34 @@ Sempre que for necessário adicionar uma variável do JavaScript no React se usa
 
 <h1>{variavel}</h1>
 
+Sempre que componentes destinos forem colocados em baixo um do outro existe uma regra que: 
+
+Componentes destinos precisam ter um componente pai em volta para poder existir lado a lado. E para resolver esse problema existem duas formas:
+
+1- criar uma *div* em volta dos componentes (não é a melhor opção):
+
+export function App() {
+  return (
+    <div>
+      <RepositoryList/>
+      <Counter />
+    </div>
+  )
+}
+
+ou
+
+2- Utilizar Fragment ou tag vazia (melhor opção):
+
+export function App() {
+  return (
+    <>
+      <RepositoryList/>
+      <Counter />
+    </>
+  )
+}
+
 --------------------------------------------------------------------------------------------
 Aula 12 - Propriedades no React
 
@@ -368,5 +396,33 @@ export function RepositoryList () {
       <RepositoryItem />
       </ul>
     </section>
+  )
+}
+
+--------------------------------------------------------------------------------------------
+Aula 13 - Estado do componente
+
+São variáveis que o react monitora e quando ha uma mudança ela causa um efeito.
+
+Para fazer isso usa-se um hooke do react o **useState()** que é importado da biblioteca do react.
+
+O useState retorna um array de duas posições onde é configurado os estados do componente em questão e quando vai ser usado. Ex:
+
+import { useState } from "react"
+
+export function Counter() {
+  const [counter, setCounter] = useState(0)
+
+  function increment() {
+    setCounter(counter + 1)
+  }
+
+  return (
+    <div>
+      <h2>{counter}</h2>
+      <button type="button" onClick={increment}>
+      Increment
+      </button>
+    </div>
   )
 }
