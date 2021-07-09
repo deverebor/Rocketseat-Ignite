@@ -282,3 +282,20 @@ Logo após no arquivo de configuração do webpack se adiciona uma nova regra pa
         exclude: /node_modules/,
         use: ['style-loader', 'css-loader']
       }
+
+-------------------------------------------------------------------------------------------
+Aula 10 - Utilizando SASS
+
+Para utilizar o sass no react é necessário instalar primeiro suas dependências.
+
+yarn add node-sass sass-loader -D
+
+A configuração vai ser a mesma do CSS em relação ao webpack:
+
+   {
+        test: **/\.scss$/**,
+        exclude: /node_modules/,
+        use: ['style-loader', 'css-loader', **'sass-loader'**]
+      }
+
+Ao invés de se criar uma nova regra para o webpack, basta somente alterar o compilador de css antigo, adicionando o .scss e seu loader 'sass-loader'.
