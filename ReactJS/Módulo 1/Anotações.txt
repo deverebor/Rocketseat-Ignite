@@ -505,3 +505,32 @@ li {
       }
 
 Todo li seguido de outro li vai ter uma margem em cima de 20px.
+
+--------------------------------------------------------------------------------------------
+Aula 17 - Utilizando o useEffect e useState.
+
+A estrutura básica de um useState é : useState([])
+
+O useEffect é um hook que dispara uma função quando algo acontecer na aplicação.
+
+A estrutura básica do useEffect é useEffect(() => {}, [])
+
+O useEffect recebe 2 parâmetros:
+
+1- () => {}:
+Qual função será executada e quando será executada.
+
+2- []:
+a variável que vai receber a mudança, ou seja a dependência.
+
+Se o array de dependência for passado vazio a função será executada apenas uma única vez.
+
+IMPORTANTE: caso o useEffect sejá executado sem passar a sua dependência ele ficara em looping executando a função infinitamente.
+
+Para fazer a alimentação de uma API na minha aplicação na maioria das vezes se utilizará o useEffect, um exemplo é a alimentação da API do GitHub na minha aplicação:
+
+useEffect(() => {
+    fetch('https://api.github.com/users/deverebor/repos') => conectando-se com a API.
+    .then(response => response.json()) => transformando a resposta dessa conexão em um JSON.
+    .then(data => console.log(data)) => mostrando esses dados no console para debuggar.
+  }, [repositories])
