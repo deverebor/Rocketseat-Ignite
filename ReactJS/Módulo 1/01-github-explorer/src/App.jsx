@@ -1,5 +1,5 @@
-export function App() {
-  throw new Error('Que intimidade é essa papai?')
+import './styles/global.css'
 
+export function App() {
   return <h1>Hello World!</h1>
 }

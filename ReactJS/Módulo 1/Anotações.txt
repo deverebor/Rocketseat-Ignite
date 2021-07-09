@@ -266,3 +266,19 @@ Se configura o package.json adicionando abaixo da license um script:
     "dev": "webpack serve",
     "build": "cross-env NODE_ENV=production webpack"
   },
+
+  -------------------------------------------------------------------------------------------
+  Aula 09 - Importando arquivos CSS
+
+Para o webpack entender as estilizações css é preciso configurar o webpack criando uma nova rule para os arquivos css.
+Para fazer a leitura e transformar para uma forma que o browser entenda é necessário utilizar um loader de estilo, para isso se instala as seguintes bibliotecas.
+
+yarn add style-loader css-loader -D
+
+Logo após no arquivo de configuração do webpack se adiciona uma nova regra para os arquivos css:
+
+{
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: ['style-loader', 'css-loader']
+      }
