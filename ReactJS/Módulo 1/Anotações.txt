@@ -483,3 +483,25 @@ devServer: {
     contentBase: path.resolve(__dirname, 'public'),
     hot: true,
   },
+
+--------------------------------------------------------------------------------------------
+  Aula 16 - Estilização da listagem
+
+Criado a estilização da parte de listagem da aplicação.
+
+li {
+      margin-bottom: 20px;
+
+      &:last-child {
+        margin: 0;
+      }
+    }
+
+o &:last-child é para modificar o ultimo filho do li, tirando a sua margem. Também é possível fazer de outra forma:
+
+li {
+      & + li {
+        margin-top: 20px;
+      }
+
+Todo li seguido de outro li vai ter uma margem em cima de 20px.
