@@ -303,7 +303,7 @@ Ao invés de se criar uma nova regra para o webpack, basta somente alterar o com
 --------------------------------------------------------------------------------------------
 Aula 11 - Componente no React
 
-Componente é tudo aquilo que compõe nosso app, como uma funcionalidade e etc. Os componentes sempre começam com a primeira letra maiúscula por exemplo App.tsx e NUNCA deve-se ter mais de um componente por arquivo.
+Componente é tudo aquilo que compõe nosso app, como uma funcionalidade e etc. Os componentes sempre começam com a primeira letra maiúscula por exemplo App.tsx e NUNCA deve-se ter mais de um componente por arquivo. Quando algo se repete muitas vezes dentro da nossa aplicação é recomendado fazer um componente.
 
 Para criar um componente cria-se a pasta componets dentro do src e lá guarda-se os componentes. 
 
@@ -324,3 +324,49 @@ Sempre que for necessário adicionar uma variável do JavaScript no React se usa
 
 --------------------------------------------------------------------------------------------
 Aula 12 - Propriedades no React
+
+As propriedades no react funcionam da mesma maneira que atributos no HTML são informações que pode ser passada para um componente funcionar de forma diferente EX:
+
+<a **href="link"**>Hello World</a> <= HTML
+
+ <Route **path="/" exact component={Home}**/> <= React
+
+ Quando se retorna muitos atributos no return usa-se o () se for pouco, pode-se colocar na mesma linha.
+
+ O conceito de componente no React é: É enviar uma informação do componente pai para o filho, ou seja enviar uma propriedade para seu filho. 
+
+ para fazer isso passa-se como parâmetro da minha função pai o props, ex:
+
+ export function RepositoryItem(props) {
+  return (
+    <li>
+      <strong>{props.repository ?? 'Default'}</strong>
+      <p>Forms in React</p>
+
+      <a href="">Acessar Repositório</a>
+    </li>
+  );
+}
+
+
+**O " **??** 'Default' " é para se caso um elemento dentro da minha propriedade esteja vazio, ele vai receber um nome e esse nome é Default.**
+
+
+E no filho passa-se a propriedade:
+
+import { RepositoryItem } from "./RepositoryItem"
+
+export function RepositoryList () {
+  return (
+    <section className="repository-list">
+      <h1>Lista de Repositórios</h1>
+
+      <ul>
+      <RepositoryItem repository="unform2"/>
+      <RepositoryItem />
+      <RepositoryItem />
+      <RepositoryItem />
+      </ul>
+    </section>
+  )
+}
