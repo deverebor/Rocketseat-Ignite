@@ -299,3 +299,8 @@ A configuração vai ser a mesma do CSS em relação ao webpack:
       }
 
 Ao invés de se criar uma nova regra para o webpack, basta somente alterar o compilador de css antigo, adicionando o .scss e seu loader 'sass-loader'.
+
+--------------------------------------------------------------------------------------------
+Aula 11 - Componente no React
+
+Componente é tudo aquilo que compõe nosso app, como uma funcionalidade e etc. Os componentes sempre começam com a primeira letra maiúscula por exemplo App.tsx e NUNCA deve-se ter mais de um componente por arquivo.
