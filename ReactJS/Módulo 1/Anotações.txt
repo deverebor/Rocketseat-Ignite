@@ -586,3 +586,7 @@ Quando o retorno é somente 1 elemento pode-se fazer da mesma linha:
   </ul>
 
 Quando se usa um map() deve-se definir uma chave "key={}" ajudando acaso haja uma mudança de local.
+
+--------------------------------------------------------------------------------------------
+Aula 19 - Fundamentos do TypeScript
+
