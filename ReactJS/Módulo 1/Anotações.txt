@@ -722,3 +722,8 @@ o <> depois do useState diz qual é o tipo daquele estado, que foi tipado anteri
 const [repositories, setRepositories] = useState<Repository[]>([])
 
 Coloca-se um array depois do nome da tipagem se ela receber uma lista de alguma coisa.
+
+--------------------------------------------------------------------------------------------
+Aula 22 - Utilizando React DevTools
+
+extensões React DevTools para debuggar.
