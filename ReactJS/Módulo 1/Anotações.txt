@@ -426,3 +426,14 @@ export function Counter() {
     </div>
   )
 }
+
+--------------------------------------------------------------------------------------------
+Aula 14 - A imutabilidade no React (useState)
+
+Quando uma variável é classificada como imutável não é possível alterar o conteúdo dessa variável mas sim dar um novo valor a ela. Ex:
+
+usuarios = ['lucas', 'souza', 'pereira']
+
+novoUsuario = [...usuarios, 'wilson']
+
+--------------------------------------------------------------------------------------------
