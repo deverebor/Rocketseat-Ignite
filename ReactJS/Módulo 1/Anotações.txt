@@ -41,7 +41,7 @@ Primeiro se diz onde está o arquivo o "-o" significa o que será gerado na saí
 
 Para o Babel entender a arquitetura de código React é necessário instalar mais 1 biblioteca:
 
-yarn add @babel/preset-react -D 
+yarn add @babel/preset-react -D
 
 Após se importa dentro do arquivo do babel.config.js
 
@@ -304,3 +304,22 @@ Ao invés de se criar uma nova regra para o webpack, basta somente alterar o com
 Aula 11 - Componente no React
 
 Componente é tudo aquilo que compõe nosso app, como uma funcionalidade e etc. Os componentes sempre começam com a primeira letra maiúscula por exemplo App.tsx e NUNCA deve-se ter mais de um componente por arquivo.
+
+Para criar um componente cria-se a pasta componets dentro do src e lá guarda-se os componentes. 
+
+Para importar um componente para uma parte do app faz da seguinte maneira:
+
+**import { RepositoryList } from './components/RepositoryList'**
+import './styles/global.scss'
+
+export function App() {
+  return **<RepositoryList/>**
+}
+
+Assim é importado o contúdo do componente para a parte necessária do app.
+
+Sempre que for necessário adicionar uma variável do JavaScript no React se usa por meio de interpolação ex:
+
+<h1>{variavel}</h1>
+
+--------------------------------------------------------------------------------------------
