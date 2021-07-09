@@ -437,3 +437,49 @@ usuarios = ['lucas', 'souza', 'pereira']
 novoUsuario = [...usuarios, 'wilson']
 
 --------------------------------------------------------------------------------------------
+Aula 15 - Fast Refresh no Webpack
+
+O fast refresh serve é um plugin que serve para atualizar o conteúdo da página salvando em cache. Para instalar usa-se o seguinte comando:
+
+yarn add -D @pmmmwh/react-refresh-webpack-plugin react-refresh
+
+Após a instalação se configura o react-refresh no webpack.
+
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin react-refresh')
+
+e o adiciona na parte de plugins do webpack:
+
+plugins: [
+    **isDevelopment && new ReactRefreshWebpackPlugin(),**
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, 'public', 'index.html')
+    })
+  ]**.filter(Boolean)**,
+
+Como o refresh é utilizado somente em desenvolvimento usa-se uma operador ternário de verificação se ele é Dev ou não. Mas isso causaria um problema que seria o retorno false, caso o usuário não seja um dev sendo assim quebraria a aplicação, por isso que é adicionado o .filter() no fim do array, filtrando o resultado boobleano e dessa forma não será armazenado na aplicação.
+
+A mesma alteração deve ser feita no modulo, ficando da seguinte maneira:
+
+ module: {
+    rules: [
+      {
+        test: /\.jsx$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            plugins: [
+              isDevelopment && require.resolve('react-refresh/babel')
+            ].filter(Boolean)
+          }
+        }
+      },
+
+Usa-se um objeto e dentro desse objeto tem o loader e as opções do plugin. Que cria-se uma condição onde se for Dev vai pedir o requerimento para o refresh.
+
+Por fim é necessário adicionar uma configuração do plugin no servidor Dev:
+
+devServer: {
+    contentBase: path.resolve(__dirname, 'public'),
+    hot: true,
+  },
