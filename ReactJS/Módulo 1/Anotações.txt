@@ -706,3 +706,19 @@ E no webpack se configura da seguinte maneira:
       }
     ],
 
+--------------------------------------------------------------------------------------------
+Aula 21 - Componentes com TypeScript
+
+Quando se definie uma propriedade no TypeScript é necessário tipar ela.
+
+Quando se tipa uma propriedade de função repete o nome dela e adiciona Props no final.
+
+Oque será tipado dentro de uma variavel cosumida de uma API deve ser somente o conteúdo que será utilizado na aplicação e não tudo.
+
+[RepositoryList => Linha 6] => não vai o Props no final porque não é uma propriedade e sim um estado.
+
+o <> depois do useState diz qual é o tipo daquele estado, que foi tipado anteriormente isso é chamado de generic.
+
+const [repositories, setRepositories] = useState<Repository[]>([])
+
+Coloca-se um array depois do nome da tipagem se ela receber uma lista de alguma coisa.
