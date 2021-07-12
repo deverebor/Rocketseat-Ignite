@@ -157,3 +157,14 @@ Repete as colunas 3 vezes com 1 de espaçamento.
 grid-template-columns: repeat(3, 1fr);
 
 o repeat(quantidades_de_vezes_para_repetir, colunasfr) serve para repetir um conteúdo uma determinada vez
+
+-------------------------------------------------------------------------------------------
+Aula 08 - Componente: TransactionsTable
+
+border-spacing: 0 0 0.5rem; => cria uma espaçamento entre os itens de uma tabela.
+
+Configura o primeiro filho de um pai.
+
+&.:first-child {
+        
+      }
