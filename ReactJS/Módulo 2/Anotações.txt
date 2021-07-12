@@ -116,3 +116,19 @@ Tudo que estiver desabilitado na página pode ser configurado utilizando a segui
     opacity: 0.5;
     cursor: not-allowed;
   }
+
+-------------------------------------------------------------------------------------------
+Aula 05 - Fontes do Google Fonts
+
+Os preconnect's coloca-se no incio de tudo no index.html 
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    .
+    .
+    .
+
+O input, textarea e o button por padrão não importam a font do body, por isso tem explicitar na configuração.
