@@ -168,3 +168,6 @@ Configura o primeiro filho de um pai.
 &.:first-child {
         
       }
+
+-------------------------------------------------------------------------------------------
+Aula 09 - Criando front-end sem back-end
