@@ -6,6 +6,7 @@ yarn create reat-app nome_do_aplicativo --template typescript
 
 Por padrão ele cria uma aplicação utilizando o JavaScript por isso o template typescript.
 
+Para inicializar o projeto com o ract-app usa-se o yarn start
 
 export function x export default function 
 
@@ -23,3 +24,37 @@ Se exporta como SVG imagens vetorizadas;
 o favicon é o ícone da página;
 
 Uma boa prática para se fazer é pegar todas as cores dominantes do projeto e transformar em varáveis para se trabalhar de uma melhor forma.
+
+-------------------------------------------------------------------------------------------
+Aula 03 - Instalando Styled Components
+
+Documentação => https://styled-components.com
+
+Uma das maiores estratégias no front-end no quesito estilização é o css in js. Existes várias bibliotecas que fazem esse trabalho porém uma das melhores é a styled-components, para instalar no projeto se utiliza:
+
+yarn add styled-componets
+
+yarn add @types/styled-components -D => integração com typescript
+
+Com o styled-components os componentes são previamente estilizados.
+
+
+Para se criar faz da seguinte maneira:
+
+import styled from "styled-components";
+
+const Title = styled.h1`
+  font-size: 64px;
+  color: #8257e8
+
+`
+
+export function App() {
+  return (
+    <div className="App">
+      <Title>Hello World!</Title>
+    </div>
+  );
+}
+
+As estilizações utilizando o styled-components nunca serão compartilhadas como ocorre no scss ou css, a não ser que seja configurado para isso.
