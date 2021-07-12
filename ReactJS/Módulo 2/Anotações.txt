@@ -132,3 +132,19 @@ Os preconnect's coloca-se no incio de tudo no index.html
     .
 
 O input, textarea e o button por padrão não importam a font do body, por isso tem explicitar na configuração.
+
+-------------------------------------------------------------------------------------------
+Aula 06 - Componente: Header
+
+Para ter um resultado melhor, cria-se primeiro o esqueleto do componente para depois estiliza-lo. 
+
+É possível de forma sucinta analisar um layout e dele tirar quantas, div's terá, button e etc. Então é sempre bom analisar o layout que estamos trabalhando para saber como construir a nossa estrutura.
+
+A tag filter cria um filtro em aul elemento e aplica uma interação, normalmente se utiliza em botões, nesse caso quando o mouse passar por cima vai aplicar esse filtro, que é um escurecimento no botão de 0.9 e o transition faz uma transição entre o estado atual e o futuro.
+
+transition: filter 0.2s;
+
+&:hover {
+      filter: brightness(0.9)
+    }
+
