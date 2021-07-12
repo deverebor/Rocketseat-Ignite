@@ -14,3 +14,12 @@ Quando se exporta normalmente é obrigatório utilizar o nome da função entre 
 
 import { App **as** Batata } from './App'
 
+-------------------------------------------------------------------------------------------
+Aula 02 - Exportando assets do Figma
+
+link do projeto no figma: https://www.figma.com/file/qkFLgkbDJdddx8T0uIligU/dtmoney---Ignite?node-id=0%3A1
+
+Se exporta como SVG imagens vetorizadas;
+o favicon é o ícone da página;
+
+Uma boa prática para se fazer é pegar todas as cores dominantes do projeto e transformar em varáveis para se trabalhar de uma melhor forma.
