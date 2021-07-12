@@ -58,3 +58,61 @@ export function App() {
 }
 
 As estilizações utilizando o styled-components nunca serão compartilhadas como ocorre no scss ou css, a não ser que seja configurado para isso.
+
+-------------------------------------------------------------------------------------------
+Aula 04 - Criando estilos globais
+
+Para se estilizar com o styled-components cria-se um arquivo .ts dentro da pasta styles e importa a biblioteca:
+
+import { createGlobalStyle } from "styled-components"; => estilização global.
+
+Os componentes são nomeados com camelcase => GlobalStyle <= porque é importado como componente no react.
+
+Por questão de acessibilidade não se remove o outlined globalmente da aplicação, porque ele define qual o elemento em foco e etc.
+
+É importante também utilizar varáveis na criação da estilização, pois elas dão uma leitura melhor para o código. EX:
+
+import { createGlobalStyle } from "styled-components";
+
+export const GlobalStyle = createGlobalStyle`
+  :root {
+    --background: #f0f2f5;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background: var(---background);
+  }
+`
+
+-webkit-font-smoothing: antialiased;  => remove o serrilhamento das fontes.
+
+1 REM = tamanho do font-size da página, ou seja:
+
+font-size = 16px -> 1rem = 16px
+
+Criação de acessibilidade na página: 
+
+ html {
+    @media (max-width: 1080px){
+      font-size: 93.75%;
+    }
+
+    @media (max-width: 720px){
+      font-size: 87.5%;
+    }
+  }
+
+Isso faz com que as fontes se adaptem para a tela do usuário e também possa deixar o uso das REM's no futuro mais simples. Se utiliza em percentagem justamente para se adaptar as configurações já dispostas no dispositivo do usuário, assim adaptando a cada um.
+
+Tudo que estiver desabilitado na página pode ser configurado utilizando a seguinte tag:
+
+[disabled]{
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
