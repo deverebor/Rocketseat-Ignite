@@ -148,3 +148,12 @@ transition: filter 0.2s;
       filter: brightness(0.9)
     }
 
+-------------------------------------------------------------------------------------------
+Aula 07 - Componente: Summary
+
+Para estilização de containers lado a lado, pode-se utilizar tanto o grid quanto o flex, mas o grid é melhor.
+Repete as colunas 3 vezes com 1 de espaçamento.
+
+grid-template-columns: repeat(3, 1fr);
+
+o repeat(quantidades_de_vezes_para_repetir, colunasfr) serve para repetir um conteúdo uma determinada vez
