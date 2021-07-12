@@ -1,0 +1,16 @@
+Aula 01 - Estrutura com create-react-app
+
+Criando aplicação com o create-react-app.
+
+yarn create reat-app nome_do_aplicativo --template typescript
+
+Por padrão ele cria uma aplicação utilizando o JavaScript por isso o template typescript.
+
+
+export function x export default function 
+
+Quando se passa uma função como export default quem define o nome do componente não é quem faz a exportação e sim quem importa, ou seja, caso eu faça uma alteração no nome da exportação vai ser permitido não será a mesma da função.
+Quando se exporta normalmente é obrigatório utilizar o nome da função entre { }. Caso seja necessário nomear de forma diferente ta função é só utilizar o **as** EX:
+
+import { App **as** Batata } from './App'
+
