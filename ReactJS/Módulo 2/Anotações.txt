@@ -359,3 +359,36 @@ export function App() {
     </>
   );
 }
+
+-------------------------------------------------------------------------------------------
+Aula 12 - Componente: NewTransactionModal
+
+Como será muitas informações dentro do html do modal é melhor transformar ele em um componente da aplicação porque além disso no futuro pode-se utiliza-lo em outras partes do site. Para isso eu preciso tipar o Modal para passar o conteúdo dele para o app em forma de Componente. 
+
+import Modal from 'react-modal'
+
+**interface NewTransactionModalProps {
+  isOpen: boolean,
+  onRequestClose: () => void,
+}**
+
+export function NewTransactionModal({isOpen, onRequestClose}: NewTransactionModalProps) {
+  return (
+
+    <Modal 
+        **isOpen={isOpen}**
+        **onRequestClose={onRequestClose}**
+        >
+          <h2>Cadastrar informação</h2>
+    </Modal>
+
+  )
+}
+
+E no componente já importado no App.tsx é necessário passar as propriedades com o nome das devidadas funções.
+
+<NewTransactionModal 
+        **isOpen={isNewTransactionModalOpen}**
+        **onRequestClose={handleCloseNewTransactionModal}**
+/> 
+
