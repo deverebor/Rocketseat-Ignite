@@ -505,3 +505,31 @@ Toda vez que for passado uma função no styled-components ela vai ser chamada a
 background: ${(props) => props.isActive ? '#ccc' : 'transparent'};
 
 Agora a mudança de cor do botão vai ser alterado quando o usuário clicar nele, porém por padrão é o deposit que está selecionado.
+
+-------------------------------------------------------------------------------------------
+Aula 16 - Cores dos botões
+O JavaScript não identifica váriaveis css no styled-components por isso coloca-se as cores em hexadecimal CASO foi utilizar em alguma função do styled-components.
+
+Para mudar a coloração para verde(Entrada) e vermelho(Saída) é preciso assim como anteriormente criar uma classe no button componentizado.
+Nesse caso foi criado o activeColor="green" e activeColor="red" para cada um dos botões.
+Com isso foi adicionado na tipagem anterior mais uma propríedade: 
+
+interface RadioBoxProps {
+  isActive: boolean,
+  **activeColor: 'green' | 'red',**
+}
+
+O botão pode ter o valor green ou red.
+
+Após isso cria-se uma nova constante onde ocorrerá o armazenamento das cores:
+
+const colors = {
+  green: '#33CC95',
+  red: '#E52E4D'
+}
+
+E é alterado o valor anterio que existia na função (#ccc) para uma condicional.
+
+background: ${(props) => props.isActive 
+    ? transparentize(0.9, colors[props.activeColor]) => transparentize é uma biblioteca interna do polished para adicionar transparencia
+    : 'transparent'};
