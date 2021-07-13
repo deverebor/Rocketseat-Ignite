@@ -217,3 +217,27 @@ createServer({
 })
 
 Se aparecer código 200 no console o retorno foi um sucesso.
+
+-------------------------------------------------------------------------------------------
+Aula 10 - Configurando cliente do Axios
+O fetch não será utilizado para fazer a sincronização com a rota e sim o Axios, já que é uma biblioteca especializada nisso.
+
+yarn add axios
+
+Para configurar o axios cria uma pasta no src chamada de services. O services ele possui o intuito de ser um serviço de dados ou seja onde se pode buscar dados, enviar dados e fazer todo esse processo.
+A criação da API base será assim:
+
+import axios from "axios";
+
+export const api = axios.create({
+  baseURL: 'http://localhost:3000/api', => url padrão de todas as requisições.
+})
+
+logo após eu volto no meu TransactionsTable e altero o useEffect:
+
+useEffect(() => {
+    api.get('/transactions')
+    .then(response => console.log(response.data))
+  }, [])
+
+Ao invés de ser fetch, agora se torna api.get() porque eu estou pegando o conteúdo da requisição e também não será mais necessário fazer a requisição de mudança para json. 
