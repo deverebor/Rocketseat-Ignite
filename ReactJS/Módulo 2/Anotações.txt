@@ -406,3 +406,8 @@ Documentação react-modal: https://github.com/reactjs/react-modal
 </Modal>
 
 Como a estilização do modal se repete em toda a aplicação, será colocado a estilização do mesmo no global.ts.
+
+-------------------------------------------------------------------------------------------
+Aula 14 - Estilizando o Modal
+
+Criado a estilização do modal 
