@@ -178,3 +178,42 @@ JsonServer => cria rotas baseadas em um db.json;
 MirageJS => possui bancos de dados integrados, relacionamentos e etc;
 MSW => Ele adiciona um funcionamento fictício para a camada de network;
 
+-------------------------------------------------------------------------------------------
+Aula 10 - Configurando MirageJS
+
+yarn add miragejs 
+
+Foi colocado no componente de transação a rota para a api:
+
+useEffect(() => {
+    fetch('http://localhost:3000/api/transactions') => rota fictícia da API;
+    .then(response => response.json())
+    .then(data => console.log(data)) => ver se o resultado foi postado.
+  }, [])
+
+Futuramente quando o back-end ficar pronto pode-se mudar o endereço para o correto.
+
+No index.jsx da aplicação, cria-se as rotas e também a importação do miragejs.
+
+import { createServer } from 'miragejs'
+
+createServer({
+  routes(){
+    this.namespace = 'api' => Cria a rota raiz da aplicação
+
+    this.get('/transactions', () => { => Cria uma rota na aplicação que foi configurada anteriormente no useEffect.
+      return [
+        {
+          id: 1,                   |
+          title: 'Transaction 1',  |
+          amount: 400,             |
+          type: 'Deposit',         | => conteúdo que vai ser exibido no array, quando a requisição for feita.
+          category: 'Food',        |
+          createdAt: new Date()    |
+        }
+      ]
+    })
+  }
+})
+
+Se aparecer código 200 no console o retorno foi um sucesso.
