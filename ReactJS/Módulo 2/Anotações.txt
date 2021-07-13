@@ -433,3 +433,75 @@ Um exemplo de usabilidade é:
 }
 
 Utilizando interpolação pode-se configurar um elemento usando alguma função da bilbioteca polished.
+
+-------------------------------------------------------------------------------------------
+Aula 16 - Funcionamento dos Botões
+
+Sempre que for armazenar um clique de um usuário em um botão ou num input, usa-se um useState()
+
+Para conseguir configurar a alteração dos botões pode se utilizar o proprio styled-components para fazer.
+É necessário primeiro transformar os botões em um componente do styled-components:
+
+export const RadioBox = styled.button**<RadioBoxProps>**` => Propiedade tipada.
+  height: 4rem;
+  border: 1px solid #d7d7d7;
+  border-radius: 0.25rem;
+
+  background: transparent;
+    
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: border-color 0.2s;
+
+  &:hover {
+    border-color: ${darken(0.1, '#d7d7d7')};
+  }
+
+  img {
+    width: 20px;
+    height: 20px;
+  }
+
+  span {
+    display: inline-block;
+    margin-left: 1rem;
+    font-size: 1rem;
+    color: var(--text-title);
+  }
+`
+
+Depois se altera os botões de button para o nome do componente:
+
+<TransactionTypeContainer> 
+  **<RadioBox**
+    type="button"
+    onClick={() => {setType('deposit')}}
+    isActive={type === 'deposit'}
+    >
+    <img src={incomeIgm} alt="Entrada" />
+    <span>Entrada</span>
+  **</RadioBox>**
+
+  **<RadioBox**
+    type="button"
+    onClick={() => {setType('withdraw')}}
+    isActive={type === 'withdraw'}
+  >
+    <img src={outcomeImg} alt="Saída" />
+    <span>Saída</span>
+  **</RadioBox>**
+</TransactionTypeContainer>
+  
+Após isso tipasse o botão para poder reber as propriedade isActive, que vai ser responsavel pela alternancia entre das colorações:
+
+interface RadioBoxProps {
+  isActive: boolean,
+}
+
+Toda vez que for passado uma função no styled-components ela vai ser chamada automaticamente EX:
+
+background: ${(props) => props.isActive ? '#ccc' : 'transparent'};
+
+Agora a mudança de cor do botão vai ser alterado quando o usuário clicar nele, porém por padrão é o deposit que está selecionado.
