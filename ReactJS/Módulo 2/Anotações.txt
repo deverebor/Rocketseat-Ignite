@@ -392,3 +392,17 @@ E no componente já importado no App.tsx é necessário passar as propriedades c
         **onRequestClose={handleCloseNewTransactionModal}**
 /> 
 
+-------------------------------------------------------------------------------------------
+Aula 13 - Estrutura do formulário
+Documentação react-modal: https://github.com/reactjs/react-modal
+
+É possivel estilizar um modal na sua propriedade, por classe ou por classes novas(criadas pelo desenvolvedor) que será a utilizada e ficara da seguinte forma:
+
+<Modal
+  **overlayClassName="react-modal-overlay"**
+  **className="react-modal-content"**
+>
+  
+</Modal>
+
+Como a estilização do modal se repete em toda a aplicação, será colocado a estilização do mesmo no global.ts.
