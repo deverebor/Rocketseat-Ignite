@@ -171,3 +171,10 @@ Configura o primeiro filho de um pai.
 
 -------------------------------------------------------------------------------------------
 Aula 09 - Criando front-end sem back-end
+
+Existem muitas ferramentas que podem simular uma back-end para continuar o desenvolvimento, elas nunca serão utilizadas para produção apenas teste e desenvolvimento como:
+
+JsonServer => cria rotas baseadas em um db.json;
+MirageJS => possui bancos de dados integrados, relacionamentos e etc;
+MSW => Ele adiciona um funcionamento fictício para a camada de network;
+
