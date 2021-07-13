@@ -298,7 +298,7 @@ export function Header() {
 }
 
 Para ficar mais semantico o modal faz parte do app, então será necessário fazer a migração do conteúdo do modal para a o App.tsx
-todas as funções e o modal serão migrados exeto o bottun que continuará no componente Header, já que a ação de aberdura é no cabeçalho mas o conteúdo do modal semanticamente faz parte do app. Após isso para conseguir pegar o conteúdo do botão clicado no Header usa-se props para passar isso para o modal no app.tsx. O componente header agora possúi uma tipagem:
+todas as funções e o modal serão migrados exeto o button que continuará no componente Header, já que a ação de aberdura é no cabeçalho mas o conteúdo do modal semanticamente faz parte do app. Após isso para conseguir pegar o conteúdo do botão clicado no Header usa-se as props para passar isso para o modal no app.tsx. O componente header agora possúi uma tipagem:
 
 **interface HeaderProps {
   onOpenNewTransactionModal: () => void
@@ -310,10 +310,51 @@ export function Header(**{onOpenNewTransactionModal}: HeaderProps**) {
     <Container>
       <Content>
         <img src={logoImg} alt="dtmoney" />
-        **<button type="button" onClick={handleOpenNewTransactionModal}>**
+        **<button type="button" onClick={onOpenNewTransactionModal}>**
           Nova Transação
         </button>
       </Content>
     </Container>
   )
+}
+
+E no App.tsx ficará configurado da seguinte maneira:
+
+import Modal from 'react-modal'
+import { Dashboard } from "./components/Dashboard";
+import { Header } from "./components/Header";
+import { useState } from "react";
+
+import { GlobalStyle } from "./styles/global";
+
+
+export function App() {
+   
+  const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] = useState(false)
+
+  function handleOpenNewTransactionModal(){
+    setIsNewTransactionModalOpen(true)
+  }
+
+  function handleCloseNewTransactionModal(){
+    setIsNewTransactionModalOpen(false)
+  }
+  
+  return (
+    <>
+      **<Header onOpenNewTransactionModal={handleOpenNewTransactionModal}/> ** => Pegando a props do Header e passando para a função de abertura
+
+      <Dashboard />
+
+      <Modal 
+        isOpen={isNewTransactionModalOpen} 
+        onRequestClose={handleCloseNewTransactionModal}
+        >
+          <h2>Cadastrar informação</h2>
+      </Modal>
+
+      <GlobalStyle />
+      
+    </>
+  );
 }

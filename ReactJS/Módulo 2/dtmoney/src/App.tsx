@@ -1,6 +1,6 @@
+import Modal from 'react-modal'
 import { Dashboard } from "./components/Dashboard";
 import { Header } from "./components/Header";
-import Modal from 'react-modal'
 import { useState } from "react";
 
 import { GlobalStyle } from "./styles/global";
