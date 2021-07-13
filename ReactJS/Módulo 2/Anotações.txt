@@ -411,3 +411,25 @@ Como a estilização do modal se repete em toda a aplicação, será colocado a 
 Aula 14 - Estilizando o Modal
 
 Criado a estilização do modal 
+
+-------------------------------------------------------------------------------------------
+Aula 15 - Criando botões de Tipo
+
+Com os botões de entrada e saida vão possuir uma configuração propria é necessario criar um componente de estilização deles. 
+
+Para estilziar um botão que não sejá capaz de aceitar o filter usa-se funções já que estamos trabalhando com styled-components. Uma biblioteca boa para isso é a polished:
+
+yarn add polished
+
+É necessário importar oque será usado onde está o styled-components:
+
+import styled from "styled-components";
+**import { darken } from 'polished'**
+
+Um exemplo de usabilidade é: 
+
+&:hover {
+      border-color: **${darken(0.1, '#d7d7d7')};**
+}
+
+Utilizando interpolação pode-se configurar um elemento usando alguma função da bilbioteca polished.
