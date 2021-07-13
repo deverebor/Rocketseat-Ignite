@@ -241,3 +241,79 @@ useEffect(() => {
   }, [])
 
 Ao invés de ser fetch, agora se torna api.get() porque eu estou pegando o conteúdo da requisição e também não será mais necessário fazer a requisição de mudança para json. 
+
+-------------------------------------------------------------------------------------------
+Aula 11 - Configurando modal de criação
+Documentação react-modal: https://github.com/reactjs/react-modal
+
+Para instalar a biblioteca do modal se utiliza:
+
+yarn add react-modal
+
+yarn @types/react-modal -D
+
+O primeiro passo para a configuração de um modal é saber qual botão será clicado para a abertura dele. No caso da aplicação desse módulo é a de Nova Transação. 
+Para a configuração de um modal primeiro cria-se uma constante para ver se o modal está aberto ou fechado;
+Após cria-se uma função para mudar o valor de abertura do modal para true;
+Após cria-se uma função para mudar o valor de fechamento do modal para false;
+É necessário um botão que executará o openModal.
+E por ultimo o modal configurado a baixo do botão onde ficará os estados e propriedades do modal como o isOpen e etc.
+
+Ex de configuração básica do modal:
+
+import { useState } from 'react'
+import Modal from 'react-modal'
+import logoImg from '../../assets/logo.svg'
+
+import { Container, Content } from './styles'
+
+export function Header() {
+  
+  const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] = useState(false)
+
+  function handleOpenNewTransactionModal(){
+    setIsNewTransactionModalOpen(true)
+  }
+
+  function handleCloseNewTransactionModal(){
+    setIsNewTransactionModalOpen(false)
+  }
+
+  return (
+    <Container>
+      <Content>
+        <img src={logoImg} alt="dtmoney" />
+        <button type="button" onClick={handleOpenNewTransactionModal}>
+          Nova Transação
+        </button>
+        <Modal 
+        isOpen={isNewTransactionModalOpen} 
+        onRequestClose={handleCloseNewTransactionModal}
+        >
+          <h2>Cadastrar informação</h2>
+        </Modal>
+      </Content>
+    </Container>
+  )
+}
+
+Para ficar mais semantico o modal faz parte do app, então será necessário fazer a migração do conteúdo do modal para a o App.tsx
+todas as funções e o modal serão migrados exeto o bottun que continuará no componente Header, já que a ação de aberdura é no cabeçalho mas o conteúdo do modal semanticamente faz parte do app. Após isso para conseguir pegar o conteúdo do botão clicado no Header usa-se props para passar isso para o modal no app.tsx. O componente header agora possúi uma tipagem:
+
+**interface HeaderProps {
+  onOpenNewTransactionModal: () => void
+}**
+
+export function Header(**{onOpenNewTransactionModal}: HeaderProps**) {
+
+  return (
+    <Container>
+      <Content>
+        <img src={logoImg} alt="dtmoney" />
+        **<button type="button" onClick={handleOpenNewTransactionModal}>**
+          Nova Transação
+        </button>
+      </Content>
+    </Container>
+  )
+}
