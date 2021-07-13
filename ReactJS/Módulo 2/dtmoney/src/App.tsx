@@ -5,6 +5,7 @@ import { useState } from "react";
 
 import { GlobalStyle } from "./styles/global";
 
+Modal.setAppElement('#root')
 
 export function App() {
    

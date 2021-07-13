@@ -327,6 +327,7 @@ import { useState } from "react";
 
 import { GlobalStyle } from "./styles/global";
 
+Modal.setAppElement('#root') => acessibilidade informando que o modal está por cima da div#root e não será possível interagir com ela no momento.
 
 export function App() {
    
