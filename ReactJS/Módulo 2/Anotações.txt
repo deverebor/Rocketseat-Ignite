@@ -562,3 +562,22 @@ ou
 
 value={number}
 onChange={event => setNumber(Number(event.target.value))}
+
+-------------------------------------------------------------------------------------------
+Aula 18 - Inserindo transação na API
+
+Para fazer uma inserção usa-se o metódo post()
+
+Deve-se criar uma rota de post no miraje onde vão passar os dados.
+
+this.post('/transactions', (schema, request) => {
+      const data = JSON.parse(request.requestBody) => pega os dados e passa para JSON. 
+    })
+
+request = requisição feita
+schema = banco de dados
+
+Rota 201 = sucesso
+
+Para integrar as rotas de post e get da api usa-se o bacndo de dados do mirage (APENAS DESENVOLVIMENTO)
+
