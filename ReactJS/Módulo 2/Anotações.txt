@@ -641,3 +641,22 @@ useEffect(() => {
   }, [])
 
 Toda vez que se utiliza um map no react, o primeiro elemento do map deve ter uma key={} para ser referencia para percorrer toda a array.
+
+-------------------------------------------------------------------------------------------
+Aula 19 - Formatando valores
+
+para fazer formatações utiliza-se um recurso dos brwosers de hoje que é o INTL.
+
+Conversão para real:
+
+<td className={transaction.type}>{new Intl.NumberFormat('pt-BR', {
+  style:'currency',
+  currency: 'BRL',
+}).format(transaction.amount)}</td>
+
+Conversão para data:
+
+<td>{new Intl.DateTimeFormat('pt-BR').format(
+      new Date(transaction.createdAt)
+)}</td>
+
