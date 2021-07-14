@@ -581,3 +581,63 @@ Rota 201 = sucesso
 
 Para integrar as rotas de post e get da api usa-se o bacndo de dados do mirage (APENAS DESENVOLVIMENTO)
 
+createServer({
+
+  models:{
+    transaction: Model,
+  },
+
+  routes(){
+    this.namespace = 'api'
+
+    this.get('/transactions', () => {
+      return this.schema.all('transaction')
+    })
+
+    this.post('/transactions', (schema, request) => {
+      const data = JSON.parse(request.requestBody)
+
+      return schema.create('transaction', data) 
+    })
+  }
+})
+
+-------------------------------------------------------------------------------------------
+Aula 19 - Listando transações e seeds
+É possível deixar um valor "default" para ser mostrado no backend trazendo para o front
+
+seeds(server){
+    server.db.loadData({
+      transactions: [
+        {
+          id: 1,
+          title: 'Freelance Web',
+          type: 'deposit',
+          category: 'Dev',
+          amount: 8000,
+          createdAt: new Date('2021 - 02 - 12 09:00:00'),
+        },
+        {
+          id: 2,
+          title: 'Aluguel',
+          type: 'withdraw',
+          category: 'Casa',
+          amount: 1500,
+          createdAt: new Date('2021 - 02 - 17 09:00:00'),
+        }
+      ]
+    })
+  },
+
+Para colocar isso em tela é necessário criar um estado para armazenar o conteúdo e setar um novo conteúdo:
+
+const [transaction, setTransaction] = useState([]) => como vai retornar uma array de objeto coloca-se no useState um array.
+
+Depois se configura o event listerner do useEffect.
+
+useEffect(() => {
+    api.get('/transactions')
+    .then(response => *setTransaction(response.data)*)
+  }, [])
+
+Toda vez que se utiliza um map no react, o primeiro elemento do map deve ter uma key={} para ser referencia para percorrer toda a array.
