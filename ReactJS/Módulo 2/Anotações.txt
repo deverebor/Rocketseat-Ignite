@@ -533,3 +533,32 @@ E é alterado o valor anterio que existia na função (#ccc) para uma condiciona
 background: ${(props) => props.isActive 
     ? transparentize(0.9, colors[props.activeColor]) => transparentize é uma biblioteca interna do polished para adicionar transparencia
     : 'transparent'};
+
+-------------------------------------------------------------------------------------------
+Aula 17 - Salvando dados do form
+
+Por padrão os formulário sempre atualizam a página quando fazem o envio de um formulário, para evitar esse "problema" do html pode-se tipar o *event* do submit de um formulário para apontar a uma direção.
+
+function handleCreateNewTransaction(event: FormEvent){
+    event.preventDefault()
+
+Uma das formas de se pegar um conteúdo do formulario para enviar a api é criando um estado em cada um com o seu devido tipo:
+
+const [title, setTitle] = useState('')
+const [value, setValue] = useState(0)
+const [category, setCategory] = useState('')
+
+E em cada input deve-se configurar um:
+
+value={title} => nome do estado criado.
+onChange={event => setTitle(event.target.value)} => evento para pegar o valor que foi colocado no input e armazenando no estado setedado.
+
+um event.target.value sempre retorna uma string. Para contornar esse problema existem algumas formas:
+
+value={number}
+onChange={event => setNumber(+event.target.value)} => adicionando um + na frente do event.
+
+ou
+
+value={number}
+onChange={event => setNumber(Number(event.target.value))}
