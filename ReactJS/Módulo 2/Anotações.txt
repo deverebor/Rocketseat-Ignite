@@ -731,4 +731,30 @@ Depois de tipar pode-se utilizar o contexto apenas passando o useContext onde se
 
 const transactions = useContext(TransactionsContext)
 
-o transactions vai armazenar o conteúdo existente no context e alimentar o componente que ele está..
+o transactions vai armazenar o conteúdo existente no context e alimentar o componente que ele está.
+
+-------------------------------------------------------------------------------------------
+Aula 21 - Movendo criação para o context
+
+interface Transaction {
+  id: number,
+  title: string,
+  amount: number,
+  type: string,
+  category: string,
+  createdAt: string,
+}
+
+type TransactionInput = Omit<Transaction, 'id' | 'createdAt'> => recebe todo o conteúdo do Transaction menos o id e o createdAte, porque está sendo omitido.
+
+Omit => omite os campos escolhidos na selação da tipagem herdada;
+Pick => seleciona os campos escolhidos na tipagem herdada;
+
+interface TransactionContextData {
+  transactions: Transaction[],
+  createTransaction: (transaction: TransactionInput) => void
+}
+
+export const TransactionsContext = createContext<TransactionContextData>(
+  {} as TransactionContextData => falando para o react que o TransactionsContext recebe um objeto e dentro desse objeto possui uma função e um parametro.
+)
