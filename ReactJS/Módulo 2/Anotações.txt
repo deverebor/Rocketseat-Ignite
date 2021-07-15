@@ -771,3 +771,43 @@ setTransactions([
     ])
 
 Não está se alterando o valor e sim reescrevendo.
+
+-------------------------------------------------------------------------------------------
+Aula 22 - Calculando resumo
+Toda vez que um valor do contexto for alterado vai mudar o valor do Summary
+
+const totalDeposits = transactions.reduce((acc, transaction) => {
+    if(transaction.type === 'deposit') {
+      return acc + transaction.amount
+    }
+
+    return acc 
+}, 0)
+
+<div>
+  <header>
+    <p>Entradas</p>
+    <img src={incomeImg} alt="Entradas"/>
+  </header>
+  **<strong>{totalDeposits}</strong>**
+</div>
+
+algoritmio de calculo das transações:
+
+const summary = transactions.reduce((acc, transaction) => {
+    if(transaction.type === 'deposit') {
+      acc.deposits += transaction.amount
+      acc.total += transaction.amount
+    } else {
+      acc.withdraws += transaction.amount
+      acc.withdraws -= transaction.amount
+    }
+
+    return acc
+  }, {
+    deposits: 0, 
+    withdraws: 0,
+    total: 0, 
+  })
+
+O reduce precisa que em toda alteração ele retorne um accumulator.
