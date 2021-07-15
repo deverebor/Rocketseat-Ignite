@@ -699,3 +699,36 @@ Existem 2 formas de se consumir um dado da ContextAPI
 const data = useContext(TransactionsContext)
 
 Quando ocorre uma mudança no valor da api de contexto vai ser alterado algum valor no local onde está sendo utilizado o useContext.
+
+-------------------------------------------------------------------------------------------
+Aula 20 - Carregando transações
+
+interface TransactionsProviderProps {
+  children: ReactNode, => propriedade do react para informar que será retornarno conteúdo react e tags.
+}
+
+export const TransactionsContext = createContext<Transaction[]>([]) => recebendo a tipagem como propriedade para armazenamento de array.
+
+export function TransactionsProvider({ children }: TransactionsProviderProps) {
+  const [transactions, setTransactions] = useState<Transaction[]>([])
+
+  useEffect(() => {
+    api.get('/transactions')
+    .then(response => setTransactions(response.data.transactions))
+  }, [])
+
+
+  return (
+    <TransactionsContext.Provider value={transactions}>
+      {children}
+    </TransactionsContext.Provider>
+  )
+}
+
+Tipando uma children para o componente poder receber todos os outros componentes como filhos no app.
+
+Depois de tipar pode-se utilizar o contexto apenas passando o useContext onde será utilizado:
+
+const transactions = useContext(TransactionsContext)
+
+o transactions vai armazenar o conteúdo existente no context e alimentar o componente que ele está..
