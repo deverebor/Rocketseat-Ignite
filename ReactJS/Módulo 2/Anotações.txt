@@ -758,3 +758,16 @@ interface TransactionContextData {
 export const TransactionsContext = createContext<TransactionContextData>(
   {} as TransactionContextData => falando para o react que o TransactionsContext recebe um objeto e dentro desse objeto possui uma função e um parametro.
 )
+
+-------------------------------------------------------------------------------------------
+Aula 21 - Finalizando inserção
+Toda função ascincrona no javascript retorna uma promise.
+
+Conceito de imutabilidade:
+
+setTransactions([
+      ...transactions, 
+      transaction,
+    ])
+
+Não está se alterando o valor e sim reescrevendo.
