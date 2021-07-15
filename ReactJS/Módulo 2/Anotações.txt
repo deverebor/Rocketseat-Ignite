@@ -811,3 +811,7 @@ const summary = transactions.reduce((acc, transaction) => {
   })
 
 O reduce precisa que em toda alteração ele retorne um accumulator.
+
+-------------------------------------------------------------------------------------------
+Aula 22 - Criando hook
+Um hook no react pode usar outros hooks.
