@@ -660,3 +660,42 @@ Conversão para data:
       new Date(transaction.createdAt)
 )}</td>
 
+-------------------------------------------------------------------------------------------
+Aula 19 - A Context API no React
+
+Quando se cria um contexto no react toda a plicação pode acessalo, mas para que todos os componentes da aplicação tenham acesso precisamos colocar em volta desses componentes um Provider.
+
+return (
+    <TransactionsContext.Provider value={[]}> => O provider obrigatoriamente precisa receber um value como atributo.
+      <Header onOpenNewTransactionModal={handleOpenNewTransactionModal}/>
+
+      <Dashboard />
+
+      <NewTransactionModal 
+        isOpen={isNewTransactionModalOpen}
+        onRequestClose={handleCloseNewTransactionModal}
+      /> 
+
+      <GlobalStyle />
+      
+    </TransactionsContext.Provider>
+  );
+
+Existem 2 formas de se consumir um dado da ContextAPI 
+1- Usando renderProps, ao invés de se passar um componente passa-se uma função:
+
+<TransactionsContext.Consumer>
+  {(data) => {
+  return (
+      <ul>
+              
+      </ul>
+    )
+   }}
+</TransactionsContext.Consumer>
+
+2- useContext:
+
+const data = useContext(TransactionsContext)
+
+Quando ocorre uma mudança no valor da api de contexto vai ser alterado algum valor no local onde está sendo utilizado o useContext.
