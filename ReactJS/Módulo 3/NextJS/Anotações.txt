@@ -50,3 +50,44 @@ O styledcomponets é muito bom porém não é necessário se utilizar em todo pr
 
 Todo arquivo que possui um 'home*.module.*css' ele é um css scoped usa-se um css modules dentro do next.js
 Quando se utiliza css modules não se faz estilização em tags diretas e sim em classes ou id's.
+
+----------------------------------------------------------------------------------
+Aula 06 - Configurando fonte externa
+O _app.tsx vai SEMPRE está por volta de toda a aplicação, ou seja, sempre envolverá todas as páginas da aplicação. Toda vez que o usuário mudar de página o _app.tsx será recarregado.
+
+Caso seja necessário carregar apenas UMA ÚNICA vez qualquer elemento, por exemplo uma font externa, se utiliza o _document.jsx esse arquivo funciona da mesma maneira que o index.html do create-react-app. 
+
+O NextJS ainda não tem um suporte tão bom para se utilizar o _docuemnt.jsx como função então exporta-se ele como uma classe:
+
+import Document from 'next/document'
+
+export default **class MyDocument** extends Document {
+  render() {
+    return(
+      
+    )
+  }
+}
+
+Todos as tags htmls utlizadas no _document são transformadas em components html que veem por padrão no NextJS:
+
+import Document, **{ Html, Head, Main, NextScript }** from 'next/document'
+
+export default class MyDocument extends Document {
+  render() {
+    return(
+      *<Html>*
+        *<Head>*
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+          <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet" /> 
+          
+        *</Head>*
+        <body>
+          <Main /> -> onde será carregado o conteúdo da página.
+          <NextScript /> -> onde fica armazenado os scripts js para funcionalidade da aplicação.
+        </body>
+      *</Html>*
+    )
+  }
+}
