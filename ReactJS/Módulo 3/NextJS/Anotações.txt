@@ -23,3 +23,21 @@ yarn create next-app ignews -> nome da aplicação
 A pasta pages só pode estar em dois lugares na estrutura de uma aplicação react: Raiz do projeto ou dentro do SRC
 
 O arquivo chamado index é o principal da aplicação e não é necessário criar uma rota default para ela. Para cada arquivo criado na pasta pages o next entende como uma rota, exceto o _app e o _documents.
+
+----------------------------------------------------------------------------------
+Aula 04 - Adicionando TypeScript
+Para adicionar o typescript ao projeto next usa-se o seguinte comando:
+
+yarn add typescript @types/react @types/node -D
+
+Quando se adiciona o typescript a um projeto next é uma boa prática importar as propriedades para o _app.tsx 
+
+import { AppProps } from 'next/app'
+
+function MyApp({ Component, pageProps }: AppProps) {
+  return <Component {...pageProps} />
+}
+
+export default MyApp
+
+Dessa forma as propriedades terão o seu valor tipado.
