@@ -41,3 +41,12 @@ function MyApp({ Component, pageProps }: AppProps) {
 export default MyApp
 
 Dessa forma as propriedades terão o seu valor tipado.
+
+----------------------------------------------------------------------------------
+Aula 05 - Estilização com SASS
+No nextjs a estilização global fica no _app.jsx para evitar conflitos de estilizações futuras, como surgimento de novas classes e também a construção da mesma.
+
+O styledcomponets é muito bom porém não é necessário se utilizar em todo projeto, pode-se alternar entre ele e o sass. O styledcomponets usa-se de muitos recursos e também uma complexidade maior, dependendo do projeto pode-se utilizar o sass ou qualquer outro pre processador de css.
+
+Todo arquivo que possui um 'home*.module.*css' ele é um css scoped usa-se um css modules dentro do next.js
+Quando se utiliza css modules não se faz estilização em tags diretas e sim em classes ou id's.
