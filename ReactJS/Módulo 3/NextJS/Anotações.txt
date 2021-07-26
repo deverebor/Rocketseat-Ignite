@@ -13,3 +13,13 @@ OAuth(Autenticação): GitHub.
 Aula 02 - Fundamentos do Next.js
 
 O NextJS utiliza SSR(Server Side Rendering) -> Faz com que o contúdo da aplicação seja carregado pelo lado do back-end assim melhorando uma serie de fatores inclusive o SO da aplicação. O modelo tradicional de SPA(Single Page Application) carrega o conteúdo todo no front-end, então caso haja algum problema de indexação a página não será carregada por completo. 
+
+----------------------------------------------------------------------------------
+Aula 03 - Criando estrutura Next.js
+Para criar uma aplicação com o next usa-se:
+
+yarn create next-app ignews -> nome da aplicação
+
+A pasta pages só pode estar em dois lugares na estrutura de uma aplicação react: Raiz do projeto ou dentro do SRC
+
+O arquivo chamado index é o principal da aplicação e não é necessário criar uma rota default para ela. Para cada arquivo criado na pasta pages o next entende como uma rota, exceto o _app e o _documents.
