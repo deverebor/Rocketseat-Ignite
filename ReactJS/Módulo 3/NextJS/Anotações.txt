@@ -1,0 +1,10 @@
+Aula 01 - Fluxo da aplicação
+O projeto que será construido no modulo é um site para assinar newsletter. 
+Link do layout do figma: https://www.figma.com/file/3pxSUIP7oueM2t0LVtuYox/ig.news-(Copy)
+
+Ferramentas que serão utilizadas na construção do site:
+
+Stripe: API para pagamentos
+FaunaDB: Banco de dados para aplicações serverless (Outra opção seria o DynamoDB da AWS)
+Prismic CMS: Content Management System -> Painel de administração para cadastrar informações e servir uma API. 
+OAuth(Autenticação): GitHub.
