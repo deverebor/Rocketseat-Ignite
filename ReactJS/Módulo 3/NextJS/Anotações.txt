@@ -81,7 +81,7 @@ export default class MyDocument extends Document {
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
           <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet" /> 
-          
+
         *</Head>*
         <body>
           <Main /> -> onde será carregado o conteúdo da página.
@@ -91,3 +91,13 @@ export default class MyDocument extends Document {
     )
   }
 }
+
+----------------------------------------------------------------------------------
+Aula 07 - Title dinâmico por página
+
+[index.tsx]
+<Head>
+  <title>Início | ig.news</title>
+</Head>
+
+Todo conteúdo colocado dentro de um <Head> é linkado com o head do _document.tsx para criar os títulos dinâmicos para cada página, caso seja colocado dentro do _document será um titulo universal e todas as páginas terão o mesmo.
