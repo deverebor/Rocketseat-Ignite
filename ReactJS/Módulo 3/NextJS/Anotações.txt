@@ -8,3 +8,8 @@ Stripe: API para pagamentos
 FaunaDB: Banco de dados para aplicações serverless (Outra opção seria o DynamoDB da AWS)
 Prismic CMS: Content Management System -> Painel de administração para cadastrar informações e servir uma API. 
 OAuth(Autenticação): GitHub.
+
+----------------------------------------------------------------------------------
+Aula 02 - Fundamentos do Next.js
+
+O NextJS utiliza SSR(Server Side Rendering) -> Faz com que o contúdo da aplicação seja carregado pelo lado do back-end assim melhorando uma serie de fatores inclusive o SO da aplicação. O modelo tradicional de SPA(Single Page Application) carrega o conteúdo todo no front-end, então caso haja algum problema de indexação a página não será carregada por completo. 
