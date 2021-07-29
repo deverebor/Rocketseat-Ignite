@@ -128,3 +128,12 @@ TODAS AS IMAGENS DEVE FICAR NO PUBLIC.
 ::before -> estilizar algo no começo da tag
 
 dentro do after ou before é necessário ter um content mesmo que estejá vazio.
+
+----------------------------------------------------------------------------------
+Aula 09 - Componente: SignInButton
+Toda vez que um componente muda de estado no react ele é renderizado novamente.
+
+Para pegar alguns icones pode-se instalar o pacote react-icons.
+
+yarn add react-icons
+
