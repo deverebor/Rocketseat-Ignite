@@ -141,3 +141,8 @@ yarn add react-icons
 Aula 09 - Página Home
 
 height: calc(100vh - 5rem); -> Altura total da tela - o fontsize
+
+----------------------------------------------------------------------------------
+Aula 09 - Componente: SubscribeButton
+
+O contexto sempre define o espaçamento dos elementos dentro dele.
