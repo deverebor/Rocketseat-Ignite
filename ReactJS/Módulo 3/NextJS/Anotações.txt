@@ -115,3 +115,16 @@ Para definir o rem da página pega-se o valor padrão do tamanho das fonts (16px
 
 16 x 93,75% =
 16 x 0,9375 = 15
+
+----------------------------------------------------------------------------------
+Aula 09 - Componente: Header
+No next não se importa as imagens como é normalmente no create-react-app importa-se assim:
+
+<img src="/images/logo.svg" alt="" />
+
+TODAS AS IMAGENS DEVE FICAR NO PUBLIC.
+
+::after -> estilizar algo antes de fechar a tags
+::before -> estilizar algo no começo da tag
+
+dentro do after ou before é necessário ter um content mesmo que estejá vazio.
