@@ -1,6 +1,7 @@
 Aula 01 - Fluxo da aplicação
 O projeto que será construido no modulo é um site para assinar newsletter. 
 Link do layout do figma: https://www.figma.com/file/3pxSUIP7oueM2t0LVtuYox/ig.news-(Copy)
+Link da documentação do NextJS: https://nextjs.org/docs/getting-started
 
 Ferramentas que serão utilizadas na construção do site:
 
@@ -146,3 +147,15 @@ height: calc(100vh - 5rem); -> Altura total da tela - o fontsize
 Aula 09 - Componente: SubscribeButton
 
 O contexto sempre define o espaçamento dos elementos dentro dele.
+
+----------------------------------------------------------------------------------
+Aula 10 - Configurando Stripe
+A chave publica do stripe é para fazer requisições de dados no front-end. 
+A chave secreta é  a chave que da o controle de admin em toda a aplicação.
+
+.env.local = rodando projeto local.
+.env.production = rodando em produção.
+.env.development = rodando em desenvolvimento.
+.env.test = rodando em teste.
+
+Documentação do NextJS sobre variáveis locais: https://nextjs.org/docs/basic-features/environment-variables
