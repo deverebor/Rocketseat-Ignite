@@ -159,3 +159,69 @@ A chave secreta é  a chave que da o controle de admin em toda a aplicação.
 .env.test = rodando em teste.
 
 Documentação do NextJS sobre variáveis locais: https://nextjs.org/docs/basic-features/environment-variables
+
+----------------------------------------------------------------------------------
+Aula 10 - Consumindo API do Stripe (SSR)
+para adicionar o stripe SDK (SoftwareDevelopmentKit) na aplicação usa-se:
+
+yarn add stripe 
+
+Documentação da API do stripe: https://stripe.com/docs/api
+Layout shift= mudança percetível ao usuário 
+
+Para exportar o conteúdo da requisição para um componente é necessário armazenar os valores em uma página já que O SSR só funciona em páginas do next e não em componentes. Para isso cria-se uma constante que armazenará as propriedades do server O NOME SÓ PODE SER getServerSideProps NÃO PODE SER OUTRO:
+
+export const getServerSideProps = async () => {
+  
+}
+
+Sempre será uma async fucntion porque retornará uma promessa que será utilizada. 
+Tudo isso se faz para poder importar uma tipagem do next para essa função que é o notFound(boleano), props e redirect:
+
+import {GetServerSideProps} from 'next'
+
+export const getServerSideProps: *GetServerSideProps* = async () => {
+
+}
+
+Tudo que é retornado dentro do getServerSideProps é passado como propriedade para a Home(props) fazendo com que tenha um fluxo de troca de dados. 
+Os comandos rodados dentro do getServerSideProps é somente NO LADO do SERVIDOR ou seja se rodarmos um console.log por exemplo ele aparecerá no lado do servidor, ou seja no nosso terminal porque todo o conteúdo está no SERVIDOR NODE.
+
+Após criar a pasta services dentro do src, cria-se um stripe.ts onde coloca-se as configurações do stripe, um exemplo "default":
+
+import Stripe from 'stripe'
+import { version } from '../../package.json'
+
+export const stripe = new Stripe(
+  process.env.STRIPE_API_KEY, -> importação da chave local.
+  {
+    apiVersion: '2020-08-27', -> versão da api
+    appInfo: { -> informação da aplicação
+      name: 'Ignews', -> nome da aplicação;
+      version -> versão importada do package.json;
+    },
+  }
+)
+
+A configuração do stripe dentro do Home() ficaria assim por "default": 
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const price = await stripe.prices.retrieve('price_1JJybFLKxNvsNVSHX1Y71OMK', {
+    expand: ['product'] -> Pega toda a descrição do produto.
+  })
+
+  const product = {
+    priceId: price.id, -> id do produto que será utilizado.
+    amount: new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD'
+    }).format(price.unit_amount / 100), -> Convertendo para USD e colocando em cents, é sempre bom utilizar centavos no servidor para conseguir trabalhar melhor com o preço.
+
+  }
+
+  return {
+    props: {
+      product, -> retornando o produto para utilização das propriedades na função Home()
+    }
+  }
+}
