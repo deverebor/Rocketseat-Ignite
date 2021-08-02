@@ -225,3 +225,27 @@ export const getServerSideProps: GetServerSideProps = async () => {
     }
   }
 }
+
+----------------------------------------------------------------------------------
+Aula 10 - Static Site Generation (SSG)
+No caso dessa aplicação já que na HOME o preço vai ser o mesmo e não receberá alteração pode-se utilizar o SSG para cuidar da renderiação disso. Com o SSG o next salva uma cópia estática da aplicação e não terá que recarregar toda vez e fazer um contato com o servidor para pegar as informações do preço. Só deve-se utilizar o SSG em páginas que o conteúdo vai ser o mesmo por tempo indeterminado.
+
+export const getStaticProps: GetStaticProps = async () => {
+  const price = await stripe.prices.retrieve('price_1JJybFLKxNvsNVSHX1Y71OMK')
+
+  const product = {
+    priceId: price.id,
+    amount: new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD'
+    }).format(price.unit_amount / 100),
+
+  }
+
+  return {
+    props: {
+      product,
+    },
+    revalidate: 60 * 60 * 24, -> Quanto tempo em segundos a página não será revalidada. 60 -> 1 min, 60 -> 1hr, 24 -> 1 dia = cada 1 dia.
+  }
+}
