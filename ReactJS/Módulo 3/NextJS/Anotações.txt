@@ -1,3 +1,4 @@
+Fundamentos do Next.js - 3.1
 Aula 01 - Fluxo da aplicação
 O projeto que será construido no modulo é um site para assinar newsletter. 
 Link do layout do figma: https://www.figma.com/file/3pxSUIP7oueM2t0LVtuYox/ig.news-(Copy)
@@ -249,3 +250,8 @@ export const getStaticProps: GetStaticProps = async () => {
     revalidate: 60 * 60 * 24, -> Quanto tempo em segundos a página não será revalidada. 60 -> 1 min, 60 -> 1hr, 24 -> 1 dia = cada 1 dia.
   }
 }
+
+
+----------------------------------------------------------------------------------
+Back-end no front-end - 3.2
+Aula 11 - API routes no Next.js
