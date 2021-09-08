@@ -260,3 +260,16 @@ Toda vez que se cria uma página dentro do next ele cria automaticamente uma rot
 A partir do momento que o código do back-end é executado no front-end nunca será seguro, pois ela se torna pública.
 
 Uma função de retorno para a api que conecta o ban-end sempre receberar um request e um response como parametro da função.
+
+----------------------------------------------------------------------------------
+Back-end no front-end - 3.2
+Estratégias de autenticação
+
+JWT(refresh token): salvo em um storage, esse JWT tem um tempo de expiração e quando o úsuario necessita novamente de um token é criado.
+
+NextAuth: quando se quer uma autenticação simples como um login social(login com terceiro Google, GitHub e etc). Quando não é necessário se preocupar em armazenar credencial de acesso do usuário.
+Para ler mais sobre autenticação com o NextAuth ( nextjs.org/docs/authentication )
+
+Providers externos: Cognito(AWS), Auth0
+
+O metódo de autenticação usada nessa aplicação é a NextAuth.
