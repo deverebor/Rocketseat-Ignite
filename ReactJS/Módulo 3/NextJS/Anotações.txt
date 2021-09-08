@@ -273,3 +273,8 @@ Para ler mais sobre autenticação com o NextAuth ( nextjs.org/docs/authenticati
 Providers externos: Cognito(AWS), Auth0
 
 O metódo de autenticação usada nessa aplicação é a NextAuth.
+
+----------------------------------------------------------------------------------
+Back-end no front-end - 3.2
+Parametrização nas rotas
+
