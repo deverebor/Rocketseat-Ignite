@@ -255,3 +255,8 @@ export const getStaticProps: GetStaticProps = async () => {
 ----------------------------------------------------------------------------------
 Back-end no front-end - 3.2
 Aula 11 - API routes no Next.js
+
+Toda vez que se cria uma página dentro do next ele cria automaticamente uma rota.
+A partir do momento que o código do back-end é executado no front-end nunca será seguro, pois ela se torna pública.
+
+Uma função de retorno para a api que conecta o ban-end sempre receberar um request e um response como parametro da função.
