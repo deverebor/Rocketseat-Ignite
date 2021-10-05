@@ -278,3 +278,9 @@ O metódo de autenticação usada nessa aplicação é a NextAuth.
 Back-end no front-end - 3.2
 Parametrização nas rotas
 
+O nextauth utiliza o spreedoperator para pegar todo o conteúdo da rota e ser utilizada nas rotas futuras.
+Ex:
+
+[...params].tsx => retornara todo o conteúdo de dentro da rota users.
+
+Para isso funcionar é necessário criar uma pasta para a rota.

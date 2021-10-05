@@ -7,11 +7,11 @@ export default (request: NextApiRequest, response: NextApiResponse) => {
     },
     
     {
-      id: 2, name: 'Souza'
+      id: 2, name: 'Geisielle'
     },
     
     {
-      id: 3, name: 'Pereira'
+      id: 3, name: 'Wilson'
     },
   ]
 
