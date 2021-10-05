@@ -303,4 +303,4 @@ Além disso para verificar se o usuário está logado ou não usasse uma proprie
 Back-end no front-end - 3.2
 Escolhendo um banco de dados
 
-Uyilizado na aplicação: FaunaDB
+Utilizando na aplicação: FaunaDB melhor compatibilidade com o NextJS
