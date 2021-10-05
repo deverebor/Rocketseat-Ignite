@@ -314,3 +314,32 @@ fauna.com/pricing
 Necessário criar o fauna.ts no services. 
 
 AS CONSULTAS NÃO PODEM SER FEITAS NO LADO DO USUÁRIO, SOMENTE NA /api ou no export const getStaticProps.
+
+
+----------------------------------------------------------------------------------
+Back-end no front-end - 3.2
+Salvando usuário no banco
+
+[JWT](http://www.md5.cz/)
+
+É necessário importar o query para fazer a inserção no banco. uma estrutra base será algo similar a isso:
+
+callbacks: {
+    async signIn(user, account, profile) {
+      const { email } = user
+
+      try {
+        await fauna.query(
+          q.Create(
+            q.Collection('users'),
+            { data: {email}}
+          )
+        )
+
+        return true
+      } catch {
+        return false
+      }
+      
+    },
+  }
