@@ -284,3 +284,17 @@ Ex:
 [...params].tsx => retornara todo o conteúdo de dentro da rota users.
 
 Para isso funcionar é necessário criar uma pasta para a rota.
+
+----------------------------------------------------------------------------------
+Back-end no front-end - 3.2
+Autenticação com Next Auth
+
+Necessário criar um OAuth no github. 
+[Aqui](https://github.com/settings/applications/new)
+[Parametros para as requisições no [...nextauth].ts](https://docs.github.com/pt/developers/apps/building-oauth-apps/authorizing-oauth-apps)
+
+Dentro do env, configurasse os tokens da aplicação de autenticação utilizada, nesse caso o GitHubAuth.
+
+Para utilizar a autenticação vincula ao botão uma função do proprio nextauth chamada signIn.
+Para deslogar o usuário da aplicação é necessário utilizar a função signOut.
+Além disso para verificar se o usuário está logado ou não usasse uma propriedade da função useSession() chamada session. 
