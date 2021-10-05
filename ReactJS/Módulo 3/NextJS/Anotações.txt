@@ -320,7 +320,7 @@ AS CONSULTAS NÃO PODEM SER FEITAS NO LADO DO USUÁRIO, SOMENTE NA /api ou no ex
 Back-end no front-end - 3.2
 Salvando usuário no banco
 
-[JWT](http://www.md5.cz/)
+[JWT](https://next-auth.js.org/warnings#server)
 
 É necessário importar o query para fazer a inserção no banco. uma estrutra base será algo similar a isso:
 
