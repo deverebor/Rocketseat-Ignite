@@ -343,3 +343,32 @@ callbacks: {
       
     },
   }
+
+----------------------------------------------------------------------------------
+Back-end no front-end - 3.2
+Verificando usuário duplicado
+
+try {
+        await fauna.query(
+          q.If( => Se
+            q.Not( => Não
+              q.Exists( => Existe
+                q.Match( => Algo igual a isso:
+                  q.Index('user_by_email'),
+                  q.Casefold(user.email)
+                )
+              )
+            ),
+            q.Create( => Cria
+              q.Collection('users'), => Na colections
+              { data: {email}} => usuario com email
+            ),
+            q.Get( => Se não, pega
+              q.Match( => Algo igual a isso
+                q.Index('user_by_email'),
+                q.Casefold(user.email)
+              )
+            )
+          )
+        )
+Cria-se essa consulta para fazer a verificação. 
