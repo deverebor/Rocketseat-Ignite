@@ -304,3 +304,13 @@ Back-end no front-end - 3.2
 Escolhendo um banco de dados
 
 Utilizando na aplicação: FaunaDB melhor compatibilidade com o NextJS
+
+----------------------------------------------------------------------------------
+Back-end no front-end - 3.2
+Configurando FaunaDB
+
+fauna.com/pricing
+
+Necessário criar o fauna.ts no services. 
+
+AS CONSULTAS NÃO PODEM SER FEITAS NO LADO DO USUÁRIO, SOMENTE NA /api ou no export const getStaticProps.
