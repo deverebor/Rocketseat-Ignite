@@ -298,3 +298,9 @@ Dentro do env, configurasse os tokens da aplicação de autenticação utilizada
 Para utilizar a autenticação vincula ao botão uma função do proprio nextauth chamada signIn.
 Para deslogar o usuário da aplicação é necessário utilizar a função signOut.
 Além disso para verificar se o usuário está logado ou não usasse uma propriedade da função useSession() chamada session. 
+
+----------------------------------------------------------------------------------
+Back-end no front-end - 3.2
+Escolhendo um banco de dados
+
+Uyilizado na aplicação: FaunaDB
