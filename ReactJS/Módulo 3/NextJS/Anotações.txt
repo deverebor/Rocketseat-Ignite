@@ -419,3 +419,32 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     res.status(405).end('Method not allowed') => ´Metódo não permitido
   }
 }
+
+----------------------------------------------------------------------------------
+Back-end no front-end - 3.2
+Redirecionando para o Stripe
+
+Para comunicar o front-end com as todas da API do tipo POST usa-se o axios ou fetch, nesse caso utilizei o axios.
+
+Integração do Stripe com o browser = stripe-js.ts yarn add @stripe/stripe-js
+
+export async function getStripeJs(){
+  const stripeJs = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY) => chave publica para criação do cliente no stripe.
+
+  return stripeJs
+}
+
+//checkout session
+    try {
+      const response = await api.post('/subscribe') => envia para a rota de subscrebe.
+
+      const { sessionId } = response.data => armazena a id da seçãoa atual do usuário.
+
+      const stripe = await getStripeJs() => pega o id da seção atual do usuário no cookie,
+
+      await stripe.redirectToCheckout({ sessionId }) => envia para a tela de pagamento.
+
+    } catch (err) {
+      alert(err.message)
+    }
+  }
