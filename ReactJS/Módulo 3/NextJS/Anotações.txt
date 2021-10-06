@@ -448,3 +448,7 @@ export async function getStripeJs(){
       alert(err.message)
     }
   }
+
+----------------------------------------------------------------------------------
+Back-end no front-end - 3.2
+Evitando duplicação no Stripe
