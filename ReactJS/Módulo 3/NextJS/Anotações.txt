@@ -506,6 +506,7 @@ if (req.method === 'POST') { => se for método POST, ou seja, se fizer uma conex
 
 
 ---------------------------------------------------------------------------------- 
-Back-end no front-end - 3.2 
-Webhooks do Stripe
+Back-end no front-end - 4.0 
+Escolhendo um CMS
 
+JAMStack (JavaScript API Markup Stack)
