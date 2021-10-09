@@ -452,3 +452,55 @@ export async function getStripeJs(){
 ----------------------------------------------------------------------------------
 Back-end no front-end - 3.2
 Evitando duplicação no Stripe
+
+Para remover a repetição de dados foi necessário fazer algumas alterações, como na aplicação trata-se de uma inscrição mensal, o usuário tem a opção de remover essa inscrição 
+Insecrever-se no futuro novamente ou continuar, então é necessário adaptar essa lógica que até então não existe na aplaicação.
+
+É necessário tipar o User para definir as propriedades que serão levadas por ele. 
+
+type User = {
+  ref: {
+    id: string; -> id do usuário
+  },
+  data: {
+    stripe_customer_id: string, -> id do customer na api do stripe.
+  }
+}
+
+
+Além do id para a autenticação do usuário também deve ser armazenado o id do usuário no stripe, para fazer isso utiliza-se dos cookies, definindo assim o mesmo id que escite no banco de dados para o stripe também. Para fazer isso definimos da seguinte maneira:
+
+if (req.method === 'POST') { => se for método POST, ou seja, se fizer uma conexão post no banco de dados.
+    const session = await getSession({ req }); => pega a seção do usuário.
+
+    const user = await fauna.query<User>( => Usa a tipagem do usuário para passar os atributos necessários.
+      q.Get( => Pega o Match
+        q.Match( => Procura algo parecido com isso:
+          q.Index('user_by_email'), => email
+          q.Casefold(session.user.email) => coloca o novo id relacionando com o email
+        )
+      )
+    );
+
+    let customerId = user.data.stripe_customer_id;
+
+    if (!customerId) { => se for dirente de customerId
+      const stripeCustomer = await stripe.customers.create({ =>cria um novo usuário com email no banco.
+        email: session.user.email,
+        // metadata: 
+      });
+
+      await fauna.query(
+        q.Update( => faz o update
+          q.Ref(q.Collection('users'), user.ref.id), na coleção de users
+          {
+            data: {
+              stripe_customer_id: stripeCustomer.id, => esse conteúdo 
+            }
+          }
+        )
+      )
+
+      customerId = stripeCustomer.id;
+    }
+
