@@ -504,3 +504,8 @@ if (req.method === 'POST') { => se for método POST, ou seja, se fizer uma conex
       customerId = stripeCustomer.id;
     }
 
+
+---------------------------------------------------------------------------------- 
+Back-end no front-end - 3.2 
+Webhooks do Stripe
+

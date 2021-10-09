@@ -33,15 +33,13 @@
       &:hover {
         color: var(--white);
       }
-
-      //Estilização do indicador abaixo dos elementos do menu.
       &.active {
         color: var(--white);
         font-weight: bold;
       }
-      
+
       &.active::after {
-        content: '';
+        content: "";
         height: 3px;
         border-radius: 3px 3px 0 0;
         width: 100%;
@@ -53,7 +51,7 @@
     }
   }
 
-  > button {
+  button {
     margin-left: auto;
   }
 }
