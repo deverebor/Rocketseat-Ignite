@@ -15,3 +15,35 @@ Será utilizado nesse projeto a [Chakra UI](https://chakra-ui.com/docs/getting-s
 Biblioteca mais famosa de para transição é o Frame motion.
 
 O Chakra dispõe de um [tema](https://chakra-ui.com/docs/theming/theme) padrão que possui configurações simples e fáceis.
+
+----------------------------------------------------------------------------------
+
+## Criando projeto NextJS
+
+```shell
+yarn create next-app dashgo
+```
+
+Ou
+
+```shell
+yarn create next-app --typescript
+```
+
+A estrutura inicial recomendada para um projeto NextJS é:
+
+```bash  
+  ├── .next
+  │ 
+  ├── node_modules
+  │
+  ├── public
+  │
+  ├── src
+  │  ├── components
+  │  ├── pages
+  │  │   ├── _app.tsx
+  │  │   ├── index.tsx
+  │  │
+  │  └── styles
+```
