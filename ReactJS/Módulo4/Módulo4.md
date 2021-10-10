@@ -149,7 +149,7 @@ Para configurar as nossas próprias cores usa-se o:
 
 ## Configurando a fonte
 
-Primeiro cria-se o _document.tsx para configurar o nosso documento html no next. 
+Primeiro cria-se o _document.tsx para configurar o nosso documento html no next.
 Logo após cria-se uma classe que terá na sua estrutura a fonte que será utilizada.
 
 ```typescript
@@ -172,6 +172,7 @@ export default class MyDocument extends Document {
   }
 }
 ```
+
 Configurado o a fonte na raiz da aplicação agora é necessário configurar no Chakra UI, dentro do themes.ts:
 
 ```typescript
@@ -182,3 +183,83 @@ fonts: {
 ```
 
 O atributo heading configura as fontes do Header, já o body o do Body.
+
+----------------------------------------------------------------------------------
+
+## Página: Sign In
+
+Para trabalhar com Flex no Chakra é bem interessante, usa-se o componente ```<Flex>```
+
+Dentro desse flex existem vários parâmetros de estilização que podem ser passados clique [aqui](https://chakra-ui.com/docs/layout/flex) para saber mais.
+Alguns exemplos são:
+
+```text
+width={100} ou w={"100px"}
+height={50} ou h={"50vw"}
+```
+
+Pode-se passar tanto em número ou texto.
+
+Por padrão todo flex é uma div, para altear isso usa-se o ```as="outra tag"``` Ex:
+
+```typescript
+<Flex as="form">
+</Flex>
+```
+
+Agora o flex é um formulário.
+
+Quando se usa um número como string no valor de um elemento no Chakra e não se passa qual a sua medida ele interpreta como a medida criada [default](https://chakra-ui.com/docs/theming/theme) ferramenta.
+
+```8 = 2rem = 32px```
+
+Para converter em **rem** basta dividir por 4
+
+$
+\frac{8}{4} = 2
+$
+
+Para converter em **px** basta multiplicar por 4
+
+$
+8\times 4 = 32
+$
+
+O ```<Button>``` dentro do Chakra possui uma propriedade chamada colorScheme que faz com que ele possa mudar a sua cor padrão de Botão.
+
+```typescript
+<Button type="submit" mt="6" colorScheme="red">Entrar</Button>
+```
+
+O Chakra dispõe de várias formas de configuração do conteúdo, trazendo uma liberdade maior para estilização. Para configurar por exemplo o estilo da borda do botão quando o foco está ativo é o focusBorderColor:
+
+```typescript
+ <Input
+    name="email"
+    type="email"
+    placeholder="Login" 
+    focusBorderColor="red.900"/>
+```
+
+Também é possível modificar o tipo de contorno que terá o input, para saber mais clique [aqui](https://chakra-ui.com/docs/form/input).
+Um dos exemplos é o flushed, que deixa o contorno apenas na parte de baixo. E para configurar isso usa-se o variant:
+
+```typescript
+<Input
+   variant="flushed"/>
+```
+
+Para configurar os estados que um elemento no Chakra tem usa-se o _nomeDoEstado, exemplo:
+
+```typescript
+<Input
+  _hover={{
+    bgColor: 'gray.900'
+  }}
+```
+
+As {} indica que será atribuido um código JavaScript e dentro disso passamos um objeto, esse objeto tem como atributos a cor de fundo sendo um cinza mais escuro.
+
+A propriedade size="" no Chakra indica o tamanho que o input terá.
+
+Quando se cria uma pilha de elementos que terá um espaçamento entre eles usa-se o **Stack** um componente do Chakra UI.
