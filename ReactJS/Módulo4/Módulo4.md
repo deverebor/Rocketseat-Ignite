@@ -44,6 +44,7 @@ A estrutura inicial recomendada para um projeto NextJS é:
   │  ├── pages
   │  │   ├── _app.tsx
   │  │   ├── index.tsx
+  │  │   └── _document.tsx
   │  │
   │  └── styles
 ```
@@ -143,3 +144,41 @@ Para configurar as nossas próprias cores usa-se o:
     }
   },
 ```
+
+----------------------------------------------------------------------------------
+
+## Configurando a fonte
+
+Primeiro cria-se o _document.tsx para configurar o nosso documento html no next. 
+Logo após cria-se uma classe que terá na sua estrutura a fonte que será utilizada.
+
+```typescript
+import Document, { Html, Head, Main, NextScript } from 'next/document'
+
+export default class MyDocument extends Document {
+  render() {
+    return (
+      <Html>
+        <Head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"></link>
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    )
+  }
+}
+```
+Configurado o a fonte na raiz da aplicação agora é necessário configurar no Chakra UI, dentro do themes.ts:
+
+```typescript
+fonts: {
+    heading: 'Roboto',
+    body: 'Roboto',
+  },
+```
+
+O atributo heading configura as fontes do Header, já o body o do Body.
