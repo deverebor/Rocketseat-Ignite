@@ -420,4 +420,50 @@ Na documentação do Chakra pede-se que caso utilize um ícone de fora da biblio
 
 ```typescript
 <Icon as={RiSearchLine} fontSize="20"/>
+
 ```
+
+----------------------------------------------------------------------------------
+
+## Finalizando o Header
+
+Nessa parte foi feito as adições do botão de notificação/pedido de amizade e o avatar do usuário/nome/email
+
+Como o icone de notificação ficará lado a lado do de amizades, usa-se o ```HStack``` que é um componente com orientação Horizontal de um Stack(também existe o VStack, que parte do mesmo pressuposto).
+
+```typescript
+<HStack
+  spacing="8"
+  mx="8"
+  pr="8"
+  py="1"
+  color="gray.300"
+  borderRight={1}
+  borderColor="gray.700"
+  >
+  <Icon as={RiNotification2Line} fontSize="20" />
+  <Icon as={RiUser2Line} fontSize="20" />
+</HStack>
+```
+
+Para a sessão com o Nome do usuário + email utiliza-se o componente ```Box``` que é a "div" do Chakra.
+
+```typescript
+<Box mr="4" textAlign="right">
+  <Text>Lucas Souza</Text>
+  <Text color="gray.300" fontSize="small">
+    lucasp.sdev@gmail.com
+  </Text>
+</Box>
+```
+
+Para a configuração da seção do usuário usa-se o componente ```Avatar``` do Chakra:
+
+```typescript
+<Avatar size="md" name="Lucas Souza" src="https://github.com/deverebor.png" />
+```
+
+Usa-se esse componenete porque ele premite interações utéis como:
+
+- Caso o usuário não tenha foto de perfil ficará as iniciais do nome ```name=""```.
+- Se o usuário tiver uma foto de perfil basta linkar no ```src=""```
