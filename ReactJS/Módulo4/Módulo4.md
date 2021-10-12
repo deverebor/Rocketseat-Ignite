@@ -467,3 +467,74 @@ Usa-se esse componenete porque ele premite interações utéis como:
 
 - Caso o usuário não tenha foto de perfil ficará as iniciais do nome ```name=""```.
 - Se o usuário tiver uma foto de perfil basta linkar no ```src=""```
+
+----------------------------------------------------------------------------------
+
+## Componente: Sidebar
+
+Como a sidebar será utilizado em diversas partes da aplicação além do Dashboard cria-se um componente:
+
+```bash  
+  ├── src
+  │  ├── components
+  │  │   └── Sidebar.tsx
+```
+
+Para a estilização padrão do sidebar foi feito, O ```Box as="aside"``` já que normalmente se utiliza em sidebar essa propiedade para definir uma sidebar.
+
+```typescript
+<Box as="aside" w="64" mr="8">
+//..código
+</Box>
+```
+
+Como haverá um conjunto de conteúdos usa-se o stack, para agrupar todos esses conteúdos e trazer organizado na tela.
+
+```typescript
+<Stack spacing="12" align="flex-start">
+//..código
+</Stack>
+```
+
+Cada seçãos será divida por uma ```<Box>``` ou seja uma div. Dentro de cada box terá uma seção com o conteúdo pre definido:
+
+Seção: **GERAL**:
+
+```typescript
+<Box>
+  <Text fontWeight="bold" color="gray.400" fontSize="small">GERAL</Text>
+    <Stack spacing="4" mt="8" align="stretch">
+      <Link display="flex" align="center">
+        <Icon as={RiDashboardLine} fontSize="20" />
+        <Text ml="4" fontWeight="medium">Dashboard</Text>
+      </Link>
+      <Link display="flex" align="center">
+        <Icon as={RiContactsLine} fontSize="20" />
+        <Text ml="4" fontWeight="medium">Usuários</Text>
+      </Link>
+    </Stack>
+</Box>
+```
+
+Seção: **AUTOMAÇÃO**:
+
+```typescript
+<Box>
+  <Text fontWeight="bold" color="gray.400" fontSize="small">AUTOMAÇÃO</Text>
+    <Stack spacing="4" mt="8" align="stretch">
+      <Link display="flex" align="center">
+        <Icon as={RiInputMethodLine} fontSize="20" />
+        <Text ml="4" fontWeight="medium">Formulários</Text>
+      </Link>
+      <Link display="flex" align="center">
+        <Icon as={RiGitMergeLine} fontSize="20" />
+        <Text ml="4" fontWeight="medium">Automação</Text>
+      </Link>
+    </Stack>
+</Box>
+```
+
+Dentro de cada seção existe um ```<Stack>``` que envole os ```<Links>``` e seu conteúdo.
+O ```spacing=""``` é utilizado para informar o espaçamento em cada item interno ao Stack.
+
+Por questões de boas práticas como essa side bar vai conter muitas seções e links, atomizar mais ainda e componenteizar algumas seções, assim tornando a aplicação melhor no quesito manutenção e também para futuras melhorias.
