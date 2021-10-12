@@ -538,3 +538,95 @@ Dentro de cada seção existe um ```<Stack>``` que envole os ```<Links>``` e seu
 O ```spacing=""``` é utilizado para informar o espaçamento em cada item interno ao Stack.
 
 Por questões de boas práticas como essa side bar vai conter muitas seções e links, atomizar mais ainda e componenteizar algumas seções, assim tornando a aplicação melhor no quesito manutenção e também para futuras melhorias.
+
+----------------------------------------------------------------------------------
+
+## Pagina: Dashboard
+
+Biblioteca para gráficos [Apexcharts.js](https://apexcharts.com/docs/installation/)
+
+```bash
+yarn add apexcharts react-apexcharts
+```
+
+O ```<SimpleGrid>``` é Compenente para criação de grids simples, caso necessário algo mais complexo usa-se o ```<Grid>```.
+
+O SimpleGrid possui diversas propriedades e uma delas é o ```<minChildWidth>``` ele existe somente dentro do SimpleGrid e torna a responsividade mais automatizada, já que após uma determinada largura ele vai "quebrar" o layout, colocando um elemento em cima do outro.
+
+```typescript
+<SimpleGrid flex="1" gap="4" minChildWidth="320px" align="flex-start">
+  <Box
+    p="8"
+    bg="gray.800"
+    borderRadius="8"
+    pb="4"
+    >
+      <Text fontSize="lg" mb="4">Inscritos da Semana</Text>
+      <Chart options={options} series={series} type="area" height={160} />
+  </Box>
+
+  <Box
+    p="8"
+    bg="gray.800"
+    borderRadius="8"
+    pb="4"
+    >
+      <Text fontSize="lg" mb="4">Taxa de Abertura</Text>
+      <Chart options={options} series={series} type="area" height={160} />
+  </Box>
+</SimpleGrid>
+```
+
+Para configurar o Chart é necessário criar 2 constantes:
+
+```typescript
+const option = {
+
+} 
+
+//e
+
+const series = [
+
+]
+```
+
+> No option ficará as configurações do grafico.
+> No series ficará os dados do grafico.
+
+```typescript
+const option: ApexOptions = {
+
+} 
+```
+
+É necessário caso esteja utilizando typescript, passar o ```ApexOptions``` como proprioedades das **options**, porque caso contrário não será enctrado essas propriedades do Chart.
+
+Em Next quando se faz o primeiro carregamento da aplicação, ocorre um loading do HTML pelo servidor back-end e do o front-end.
+Dentro dessa intermediação roda-se um processo node e quando se recarrega a página o Chart apresentará um erro:
+
+```text
+Server Error
+ReferenceError: window is not defined
+
+This error happened while generating the page. Any console logs will be displayed in the terminal window.
+```
+
+A o Chart precisa do objeto window e este não é renderizado no lado do servidor, para resolver fazemos:
+
+1. Importação do ```dynamic```
+
+    ```typescript
+    import dynamic from 'next/dynamic'
+    ```
+
+2. Depois reescrevemos a importação do Chart transformando-o em uma constante:
+
+    ```typescript
+    const Chart = dynamic(() => import('react-apexcharts'), {
+      ssr: false,
+    })
+    ```
+
+Esse tipo de importação chamasse *lazy loading* ou seja quando se carrega algum componente de forma dinamica, por exemplo quando o usuário clicar em um botão e etc.
+Além disso passamos uma opção ```ssr: false,```. Essa opção informa que aquele componente especifico não sera carregado no lado do servidor e sim no lado do cliente.
