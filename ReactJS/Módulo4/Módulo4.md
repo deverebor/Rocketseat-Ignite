@@ -263,3 +263,72 @@ As {} indica que será atribuido um código JavaScript e dentro disso passamos u
 A propriedade size="" no Chakra indica o tamanho que o input terá.
 
 Quando se cria uma pilha de elementos que terá um espaçamento entre eles usa-se o **Stack** um componente do Chakra UI.
+
+----------------------------------------------------------------------------------
+
+## Componente: Input
+
+Como forma de boas práticas para a manutenção de uma aplicação, muitas vezes será necessário componentizar um elemento.
+Utilizando o Chakra não será diferente e para fazer isso é simples.
+
+Nesse caso foi componentizado o elemento Input.
+
+```bash  
+  ├── src
+  │  ├── components
+  │  │   └── Form
+  │  │        └──  Input.tsx
+```
+
+Foi criado uma pasta para os componentes de formulário, sempre que possível é bom separar-lo pelo todo, ou seja, de onde vem aquele componente.
+
+Dentro do ```Input.tsx``` importa-se os componentes do chakra que será utilizado na criação.
+
+```typescript
+import { FormControl, FormLabel, Input as ChakraInput, InputProps as CharkraInputProps } from "@chakra-ui/react";
+import React from "react";
+```
+> O **Input** e **Input props** foram importados com um alias por motivos de: O componente vai possuir uma **tipagem própria** e será **exportado como Input**.
+
+Após as importações inicia-se a codificação
+
+```typescript
+export function Input({ name, label, ...rest }: InputProps) {
+  return (
+    <FormControl>
+      { !!label && <FormLabel htmlFor={name}>{label}</FormLabel> }
+
+      <ChakraInput
+        name={name}
+        id={name}
+        focusBorderColor="red.500"
+        bgColor="gray.900"
+        variant="filled"
+        _hover={{
+          bgColor: 'gray.900'
+        }}
+        size="lg"
+        {...rest}/>
+    </FormControl>
+  )
+}
+```
+
+a função Input receberá como parâmetros as props que **devem existir** e também o que virá das propriedades padrões do Chakra, por isso usa-se o ```...rest``` para informar que será passado o restante do conteúdo que vem do pai, já que um input pode precisar de diversos elementos extras.
+
+A minha tipagem extende a tipagem pai que é o InputProps do Chakra, isso ocorre porque o ```name``` e ```label``` serão as tipagens obrigatórias do meu elemento então é necessário **explicitar** isso, já que estou utilizando TypeScript:
+
+```typescript
+interface InputProps extends CharkraInputProps {
+  name: string,
+  label?: string,
+}
+```
+
+Mas como esse componente será utilizado de forma universal e não será necessário sempre ter uma label, resolvemos isso usando uma condição:
+
+```typescript
+{ !!label && <FormLabel htmlFor={name}>{label}</FormLabel> }
+```
+
+O label pode ser falso e também pode existir.
