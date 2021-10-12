@@ -288,6 +288,7 @@ Dentro do ```Input.tsx``` importa-se os componentes do chakra que será utilizad
 import { FormControl, FormLabel, Input as ChakraInput, InputProps as CharkraInputProps } from "@chakra-ui/react";
 import React from "react";
 ```
+
 > O **Input** e **Input props** foram importados com um alias por motivos de: O componente vai possuir uma **tipagem própria** e será **exportado como Input**.
 
 Após as importações inicia-se a codificação
@@ -332,3 +333,91 @@ Mas como esse componente será utilizado de forma universal e não será necess�
 ```
 
 O label pode ser falso e também pode existir.
+
+----------------------------------------------------------------------------------
+
+## Criando o Header
+
+Como o header será utilizado em diversas partes da aplicação além do Dashboard cria-se um componente:
+
+```bash  
+  ├── src
+  │  ├── components
+  │  │   └── Header.tsx
+```
+
+Para a estilização padrão desse Header foi feito:
+
+```typescript
+<Flex
+  as="header"
+  w="100%"
+  maxWidth={1480}
+  h="20"
+  mx="auto"
+  mt="4"
+  px="6"
+  align="center"
+  >
+         
+</Flex>
+```
+
+A estilização da "logo" da aplicação foi feito desta maneira:
+
+```typescript
+<Text
+  fontSize="3xl"
+  fontWeight="bold"
+  letterSpacing="tight"
+  w="64"
+  >
+  Dashgo
+  <Text as="span" ml="1" color="red.500">.</Text>
+</Text>
+```
+
+Por padrão o componente ```Text``` vem com display block e é um paragrafo, Então foi necessário adicionar o ```as="span"```, fazendo com que esse Text agora torne-se um elemento HTML ```<span>```.
+
+Quando precisa-se de um ícone em conjunto de um input, a melhor maneira é fazer o elemento que está por volta dos dois ter a estilização de um Input para a pessoa clicar e ambos receberem o foco. Neste caso transformei em label:
+
+```typescript
+<Flex
+  as="label"
+  flex="1"
+  py="4"
+  px="8"
+  ml="6"
+  maxW={400}
+  alignSelf="center"
+  color="gray.200"
+  position="relative"
+  bg="gray.800"
+  borderRadius="full"
+  >
+    
+  <Input
+    color="gray.50"
+    variant="unstyled"
+    px="4"
+    mr="4"
+    placeholder='Buscar na plataforma'
+    _placeholder={{
+      color: 'gray.400'
+    }}
+    />
+  <Icon as={RiSearchLine} fontSize="20"/>
+</Flex>
+```
+
+Biblioteca de icone:
+
+```bash
+yarn add react-icons
+```
+
+Na documentação do Chakra pede-se que caso utilize um ícone de fora da biblioteca importa-se o componente ```Icon``` padrão do chakra e o alias para o externo.
+
+```typescript
+<Icon as={RiSearchLine} fontSize="20"/>
+```
