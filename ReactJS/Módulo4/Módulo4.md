@@ -715,3 +715,9 @@ Como essa paginação poderá ser utilizada em vários lugares da aplicação é
       </HStack>
     </HStack>
 ```
+
+----------------------------------------------------------------------------------
+
+## Pagina: Formulário de usuário
+
+`<Divider>` é utilizado da mesma forma que o `<hr />` do html.
