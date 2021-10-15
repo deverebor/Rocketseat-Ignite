@@ -541,7 +541,7 @@ Por questões de boas práticas como essa side bar vai conter muitas seções e 
 
 ----------------------------------------------------------------------------------
 
-## Pagina: Dashboard
+## Página: Dashboard
 
 Biblioteca para gráficos [Apexcharts.js](https://apexcharts.com/docs/installation/)
 
@@ -630,3 +630,14 @@ A o Chart precisa do objeto window e este não é renderizado no lado do servido
 
 Esse tipo de importação chamasse *lazy loading* ou seja quando se carrega algum componente de forma dinamica, por exemplo quando o usuário clicar em um botão e etc.
 Além disso passamos uma opção ```ssr: false,```. Essa opção informa que aquele componente especifico não sera carregado no lado do servidor e sim no lado do cliente.
+
+----------------------------------------------------------------------------------
+
+## Página: Lista de usuário
+
+`<Heading>` é utilizado para fazer textos `<h2>`
+
+Por padrão o botão no chakra pode utilizar dois elementos para configurar icones dentro dele.
+
+`leftIcon={}` ou `rightIcon={}`
+> direita     |   esquerda
