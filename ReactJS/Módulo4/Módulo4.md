@@ -635,9 +635,83 @@ Além disso passamos uma opção ```ssr: false,```. Essa opção informa que aqu
 
 ## Página: Lista de usuário
 
+Como será feito a listagem e exclusão de usuários é melhor criar uma rota dentro da aplicação para termos algo como `users/create` ou `users/list`.
+
 `<Heading>` é utilizado para fazer textos `<h2>`
 
 Por padrão o botão no chakra pode utilizar dois elementos para configurar icones dentro dele.
 
 `leftIcon={}` ou `rightIcon={}`
 > direita     |   esquerda
+
+----------------------------------------------------------------------------------
+
+## Componente: Pagination
+
+Como essa paginação poderá ser utilizada em vários lugares da aplicação é interessante criar um componente dele.
+
+**Lembrando** o `<HSctack>` é utilizado para alinhamento horinzontal, então nesse caso é mais interessante utiliza-lo.
+
+```typescript
+<HStack
+      mt="8"
+      justify={"space-between"}
+      align={"center"}
+      spacing={"6"}>
+
+        <Box>
+          <strong>0</strong> - <strong>10</strong> de <strong>100</strong>
+        </Box>
+
+      <HStack spacing={"2"}>
+        <Button
+          size="sm"
+          fontSize="xs"
+          w="4"
+          colorScheme={"red"}
+          disabled
+          _disabled={{
+            bg: 'red.500',
+            cursor: 'default',
+          }}>
+          1
+        </Button>
+
+        <Button
+          size="sm"
+          fontSize="xs"
+          w="4"
+          bgColor={"gray.700"}
+          _hover={{
+            bg: 'gray.500',
+
+          }}>
+          2
+        </Button>
+
+        <Button
+          size="sm"
+          fontSize="xs"
+          w="4"
+          bgColor={"gray.700"}
+          _hover={{
+            bg: 'gray.500',
+            
+          }}>
+          3
+        </Button>
+
+        <Button
+          size="sm"
+          fontSize="xs"
+          w="4"
+          bgColor={"gray.700"}
+          _hover={{
+            bg: 'gray.500',
+            
+          }}>
+          4
+        </Button>
+      </HStack>
+    </HStack>
+```
