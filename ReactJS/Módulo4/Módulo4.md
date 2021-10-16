@@ -654,66 +654,66 @@ Como essa paginação poderá ser utilizada em vários lugares da aplicação é
 
 ```typescript
 <HStack
-      mt="8"
-      justify={"space-between"}
-      align={"center"}
-      spacing={"6"}>
+  mt="8"
+  justify={"space-between"}
+  align={"center"}
+  spacing={"6"}>
 
-        <Box>
-          <strong>0</strong> - <strong>10</strong> de <strong>100</strong>
-        </Box>
+    <Box>
+      <strong>0</strong> - <strong>10</strong> de <strong>100</strong>
+    </Box>
 
-      <HStack spacing={"2"}>
-        <Button
-          size="sm"
-          fontSize="xs"
-          w="4"
-          colorScheme={"red"}
-          disabled
-          _disabled={{
-            bg: 'red.500',
-            cursor: 'default',
-          }}>
-          1
-        </Button>
+  <HStack spacing={"2"}>
+    <Button
+      size="sm"
+      fontSize="xs"
+      w="4"
+      colorScheme={"red"}
+      disabled
+      _disabled={{
+        bg: 'red.500',
+        cursor: 'default',
+      }}>
+      1
+    </Button>
 
-        <Button
-          size="sm"
-          fontSize="xs"
-          w="4"
-          bgColor={"gray.700"}
-          _hover={{
-            bg: 'gray.500',
+    <Button
+      size="sm"
+      fontSize="xs"
+      w="4"
+      bgColor={"gray.700"}
+      _hover={{
+        bg: 'gray.500',
 
-          }}>
-          2
-        </Button>
+      }}>
+      2
+    </Button>
 
-        <Button
-          size="sm"
-          fontSize="xs"
-          w="4"
-          bgColor={"gray.700"}
-          _hover={{
-            bg: 'gray.500',
-            
-          }}>
-          3
-        </Button>
+    <Button
+      size="sm"
+      fontSize="xs"
+      w="4"
+      bgColor={"gray.700"}
+      _hover={{
+        bg: 'gray.500',
+        
+      }}>
+      3
+    </Button>
 
-        <Button
-          size="sm"
-          fontSize="xs"
-          w="4"
-          bgColor={"gray.700"}
-          _hover={{
-            bg: 'gray.500',
-            
-          }}>
-          4
-        </Button>
-      </HStack>
-    </HStack>
+    <Button
+      size="sm"
+      fontSize="xs"
+      w="4"
+      bgColor={"gray.700"}
+      _hover={{
+        bg: 'gray.500',
+        
+      }}>
+      4
+    </Button>
+  </HStack>
+</HStack>
 ```
 
 ----------------------------------------------------------------------------------
@@ -721,3 +721,157 @@ Como essa paginação poderá ser utilizada em vários lugares da aplicação é
 ## Pagina: Formulário de usuário
 
 `<Divider>` é utilizado da mesma forma que o `<hr />` do html.
+
+----------------------------------------------------------------------------------
+
+## Separando componentes
+
+No Chakra assim como em interfaces declarativas um problema é a manutenção do código então com toda certeza quando se trabalha com uma interface assim usa-se da componentização atomica para resolver tais problemas.
+Deve-se analisar o código e ver se é possível reduzir o máximo de conteúdo para tornar o código mais limpo e tendo uma fácil manutenção.
+
+Nessa aplicação foi feito a componentização do Header, Pagination e Sidebar (também no futuro os elementos do dashboard e users.)
+
+### Header
+
+No header foi criado o:
+
+- index.tsx (onde está o esqueleto do conteúdo)
+- Logo.tsx (onde se encontra os elementos da logo)
+- Notification.tsx (onde se encontra o conteúdo da barra de notificação, adicionar amigos etc)
+- Profile (onde se encontra o conteúdo relacionado ao perfild o usuário: imagem de perfil, email, nome e afins)
+- SearchBox (onde se encontra a barra de pesquisa da aplicação)
+
+Para criar esses elementos foi utilizado de uma pequena refatoração, onde somente foi passado essas seções para um novo componente. Então o conteúdo continua o mesmo mas os elementos agora são componentes atomizados.
+
+### Pagination
+
+O mesmo foi feito para o pagination:
+
+- index.tsx (onde está o esqueleto do conteúdo)
+- PaginationItem.tsx (onde se econtra a seção de troca de aba da lista de usuários)
+
+No PaginationItem foi feito algo diferente do Header, como existe uma condição interna a seleção de páginas no quisto estilização. Quando o usuário se encontra em uma página selecionada possui um tipo de estilização e as outras ficam "desativadas", para essa lógica continuar fez a seguinte estrutura:
+
+```typescript
+interface PaginationItemProps {
+  pageNumber: number,
+  isCurrent?: boolean,
+}
+```
+
+Foi criado uma tipagem para essa seção, onde existe um `pageNumber` onde é defido a página onde o usuário se encontra e um `isCurrente` que ficou responsável por indicar se onde o usuário está é a pagina atual ou não.
+
+Quando usa-se esse elemento essas propriedades são **OBRIGATORIAS** isso ocorre pelo uso do typescript, onde diz-se que a PaginationItem tem propriedades obrigatorias sendo ela as citadas acima.
+
+```typescript
+<PaginationItem pageNumber={1} isCurrent />
+<PaginationItem pageNumber={2} />
+```
+
+Essa dinamicidade ocorre dentro do return da função que ficou assim:
+
+```typescript
+export function PaginationItem({ isCurrent = false, pageNumber }: PaginationItemProps){
+  if(isCurrent){
+    return(
+      <Button
+        size="sm"
+        fontSize="xs"
+        w="4"
+        colorScheme={"red"}
+        disabled
+        _disabled={{
+          bg: 'red.500',
+          cursor: 'default',
+        }}>
+        {pageNumber}
+      </Button>
+    )
+  } 
+
+  return(
+    <Button
+      size="sm"
+      fontSize="xs"
+      w="4"
+      bgColor={"gray.700"}
+      _hover={{
+        bg: 'gray.500',
+
+      }}>
+      {pageNumber}
+    </Button>
+  )
+}
+```
+
+Onde é passado as propriedades como paramentro da funnção o isCurrent recebe false como default e o pageNumber não recebe nada, já que os números serão dinâmicos.
+
+Essa condição ocorre com o bloco do `if()` onde se o elemento tiver a propriedade isCurrent ele recebe uma estilização e se não tiver ele recebe outra, para isso acotnecer o isCurrent recebe na sua tipagem como um elemento não obrigatorio, ou seja pode ter ou não.
+
+```typescript
+isCurrent?: boolean,
+```
+
+#### Sidebar
+
+O mesmo foi feito para o sidebar:
+
+- index.tsx (onde está o esqueleto do conteúdo)
+- NavLink.tsx (Onde está o conteúdo do link da barra de navegação)
+- NavSection.tsx (onde está o conteúdo da seção)
+
+Uma configuração similar ao Pagiantion foi feita aqui.
+O NavLink tem uma iteração com a aplicação de levar o susuário a seções especificas e dentro da estilização desse componente existe icones e o elemento filho daquela seção (nome do link da seção) para isso ser passado para o nosso componente "esqueleto" fez-se:
+
+```typescript
+interface NavLinkProps extends ChakraLinkProps {
+  icon: ElementType,
+  children: string,
+}
+```
+
+Como link pode também ser estilizado de outra forma foi passado como filho do LinkProps as nossas propriedades.
+
+O ElementType é usado quando se passa o nome do componente como propriedade, nesse caso será utilizado os icones personalizados dessas seções então foi utilizado essa estrategia.
+
+E o seu retorno ficou assim:
+
+```typescript
+return(
+    <Link display="flex" align="center" {...rest}>
+      <Icon as={icon} fontSize="20" />
+      <Text ml="4" fontWeight="medium">{children}</Text>
+    </Link>
+  )
+```
+
+E dentro do nosso index.tsx(Sidebar) sua declaração ficou assim:
+
+```typescript
+<NavLink icon={RiDashboardLine}>Dashboard</NavLink>
+<NavLink icon={RiContactsLine}>Usuários</NavLink>
+```
+
+Já no NavSection foi feito o mesmo escopo porém com uma diferença que é o children dele se refere a um `ReactNode` que é o filho do elemento DOM.
+
+```typescript
+interface NavSectionProps {
+  title: string,
+  children: ReactNode
+}
+```
+
+Ou seja aquele componente recebe um filho que é o NavLink.
+
+```typescript
+return (
+    <Box>
+      <Text fontWeight="bold" color="gray.400" fontSize="small">{title}</Text>
+      <Stack spacing="4" mt="8" align="stretch">
+       {children}
+      </Stack>
+    </Box>
+  );
+}
+```
