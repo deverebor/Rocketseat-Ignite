@@ -918,3 +918,27 @@ Também é possível pasar um objeto com as medidas para não ter que seguir ess
   This is responsive text
 </Text>
 ```
+
+----------------------------------------------------------------------------------
+
+## Header responsivo
+
+Para fazer a responsividade do Profile foi necessário criar uma interface passando uma propriedade `showProfileData` a qual permitirá mostrar ou não quando o conteúdo estiver no mobile. Dentro do index do Header foi configurado um constante que é a isWideVersion para saber se está em um dispositivo desktop ou não. Dentro disso foi configurado o `base e lg` base é o padrão e lg é o monitor maior.
+
+```typescript
+ const isWideVersion = useBreakpointValue({
+    base: false,
+    lg: true,
+  })
+```
+
+Dentro do Profile.tsx terá a estrutura da Propriedade do perfil e nisso, será definido o valor booelan do showProfileProps onde mostrará ou não o conteúdo da tela.
+
+```typescript
+interface ProfileProps {
+  showProfileData?: boolean,
+}
+```
+
+Porque o `isWideVerson` é implementada dentro do Header e não no seu proprio componente ?
+Porque essa configuração está sendo utilizada no Header e se caso no futuro eu queria implementar esse componente em outra parte da aplicação ele terá esse comportamento por **default** então é necessário analisar isso antes de implemetar no componente em si e não no seu "pai".
