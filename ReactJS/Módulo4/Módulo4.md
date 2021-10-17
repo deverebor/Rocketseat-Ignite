@@ -952,3 +952,11 @@ Porque essa configuração está sendo utilizada no Header e se caso no futuro e
 A primeira verificação existe para: **Se** isWideVersion **existe** não mostra o SearchBox, caso contrário mostra.
 
 A segunda é a prática da estrutura anteriormente explicada.
+
+----------------------------------------------------------------------------------
+
+## Sidebar responsivo
+
+Foi criado um novo contexto para a aplicação usando do de providers e conteúdos
+
+> melhorar depois esse resumo
