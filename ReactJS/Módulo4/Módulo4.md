@@ -942,3 +942,13 @@ interface ProfileProps {
 
 Porque o `isWideVerson` é implementada dentro do Header e não no seu proprio componente ?
 Porque essa configuração está sendo utilizada no Header e se caso no futuro eu queria implementar esse componente em outra parte da aplicação ele terá esse comportamento por **default** então é necessário analisar isso antes de implemetar no componente em si e não no seu "pai".
+
+```typescript
+ { isWideVersion && <SearchBox /> }
+
+ <Profile showProfileData={isWideVersion} />
+```
+
+A primeira verificação existe para: **Se** isWideVersion **existe** não mostra o SearchBox, caso contrário mostra.
+
+A segunda é a prática da estrutura anteriormente explicada.
