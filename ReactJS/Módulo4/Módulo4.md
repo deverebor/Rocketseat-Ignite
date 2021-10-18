@@ -977,3 +977,8 @@ Foi criado um novo contexto para a aplicação usando do de providers e conteúd
 
 ## Cadastro responsivo
 
+> melhorar depois esse resumo
+
+----------------------------------------------------------------------------------
+
+## Fluxo de navegação
