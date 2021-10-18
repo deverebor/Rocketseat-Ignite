@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Flex, Heading, Button, Icon, Table, Thead, Tr, Th, Checkbox, Tbody, Td, Text } from "@chakra-ui/react";
+import { Box, Flex, Heading, Button, Icon, Table, Thead, Tr, Th, Checkbox, Tbody, Td, Text, useBreakpointValue } from "@chakra-ui/react";
 
 import { RiAddLine, RiPencilLine } from "react-icons/ri";
 
@@ -8,11 +8,16 @@ import { SideBar } from "../../components/Sidebar";
 import { Pagination } from "../../components/Pagination";
 
 export default function UserList(){
+  const isWideVersion = useBreakpointValue({
+    base:false,
+    lg: true,
+  })
+
   return (
     <Box>
       <Header />
 
-      <Flex w="100%" my="6" maxW={1480} mx="auto" px="6">
+      <Flex w={"100%"} my={"6" }maxW={1480} mx={"auto"} px={"6"}>
         <SideBar />
 
         <Box flex="1" borderRadius={8} bg="gray.800" p="8">
@@ -32,18 +37,17 @@ export default function UserList(){
           <Table colorScheme="whiteAlpha">
             <Thead>
               <Tr>
-                <Th px="6" color="gray.300" w="8">
+                <Th px={["4","4","6"]} color="gray.300" w="8">
                   <Checkbox colorScheme="red" />
                 </Th>
 
                 <Th>Usuário</Th>
-                <Th>Data de cadastro</Th>
-                <Th w="8"></Th>
+                { isWideVersion && <Th>Data de cadastro</Th>}
               </Tr>
             </Thead>
             <Tbody>
               <Tr>
-                <Td px="6">
+                <Td px={["4","4","6"]}>
                   <Checkbox colorScheme="red" />
                 </Td>
 
@@ -54,19 +58,8 @@ export default function UserList(){
                   </Box>
                 </Td>
 
-                <Td>
-                  15 de Outubro, 2021
-                </Td>
-                <Td>
-                  <Button
-                    as="a"
-                    size="sm"
-                    fontSize="sm"
-                    colorScheme="teal"
-                    leftIcon={<Icon as={RiPencilLine} fontSize="16" />}>
-                    Editar usuário
-                  </Button>
-                </Td>
+                { isWideVersion && <Td>15 de Outubro, 2021</Td> }
+
               </Tr>
             </Tbody>
           </Table>
