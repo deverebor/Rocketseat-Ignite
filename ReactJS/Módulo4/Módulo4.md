@@ -964,3 +964,10 @@ Foi criado um novo contexto para a aplicação usando do de providers e conteúd
 ----------------------------------------------------------------------------------
 
 ## Dashboard responsivo
+
+> melhorar depois esse resumo
+
+----------------------------------------------------------------------------------
+
+## Listagem responsivo
+
