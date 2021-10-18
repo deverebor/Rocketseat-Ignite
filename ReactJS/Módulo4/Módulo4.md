@@ -982,3 +982,9 @@ Foi criado um novo contexto para a aplicação usando do de providers e conteúd
 ----------------------------------------------------------------------------------
 
 ## Fluxo de navegação
+
+> melhorar depois esse resumo
+
+----------------------------------------------------------------------------------
+
+## Sinalizando link ativo
