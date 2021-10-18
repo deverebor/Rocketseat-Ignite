@@ -960,3 +960,7 @@ A segunda é a prática da estrutura anteriormente explicada.
 Foi criado um novo contexto para a aplicação usando do de providers e conteúdos
 
 > melhorar depois esse resumo
+
+----------------------------------------------------------------------------------
+
+## Dashboard responsivo
