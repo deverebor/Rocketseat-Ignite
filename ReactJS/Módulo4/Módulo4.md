@@ -971,3 +971,9 @@ Foi criado um novo contexto para a aplicação usando do de providers e conteúd
 
 ## Listagem responsivo
 
+> melhorar depois esse resumo
+
+----------------------------------------------------------------------------------
+
+## Cadastro responsivo
+
