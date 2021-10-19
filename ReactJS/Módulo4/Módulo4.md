@@ -1056,3 +1056,65 @@ Existem diversas maneiras de fazer formulários no React.
     Toda ref possui uma current (valor atual) e o value (o valor dela).
 
 Também existem algumas bibliotecas como o [Formik](https://formik.org/docs/overview), que é uma das mais utilizadas e também o [react hook forms](https://react-hook-form.com/get-started)
+
+----------------------------------------------------------------------------------
+
+## Form de autenticação
+
+const { erros } = formState
+
+{...register('email)}
+
+Para instalar o React Hook Form usa-se:
+
+```bash
+yarn add react-hook-form
+```
+
+A primeira coisa que se faz quando está trabalhando-se com encaminhamento de ref é utilizar constantes.
+
+```typescript
+const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = ({ name, label, ...rest }, ref) => {
+  ...
+}
+```
+
+> No uso comum de um componente, pode-se utilizar tanto funções quanto constantes que apontam `arrow functions` para um resultado.
+  > Mas nesse caso é somente constantes, já que é o pré requisisto para as refs.
+
+É necessário tipar também essa ref, já que ela será do tipo `any` para isso já xiste o **ForwardRefRenderFunction** uma tipagem nativa da biblioteca que supre essa necessidade. Mas como existem outras tipagens que existiam antes da implementação desta usa-se o generic para passar as antigas + as novas.
+
+Para ter o retorno dessa constante tipada usa-se o forwardRefm, que será o responsável para comunicar-se com o nosso componente.
+
+```typescript
+export const Input = forwardRef(InputBase)
+```
+
+Agora deve-se utilizar o react-hook-form onde será passado esses dados:
+
+```typescript
+type SignInFormData = {
+  email: string,
+  password: string,
+}
+
+const { register, handleSubmit, formState } = useForm()
+
+  const handleSignIn: SubmitHandler<SignInFormData> = async (values) => {
+    await new Promise(resolve => setTimeout(resolve, 1500))
+
+    console.log(values)
+  }
+
+  <Input
+    ...
+    {...register('email')} />
+
+    <Button
+  ...
+  isLoading={formState.isSubmitting}>
+  ...
+</Button>
+```
+
+Usa-se uma constante para passar os dados porque dessa forma pode-se utilizar de um efeito visual de carregamento.
