@@ -1017,4 +1017,42 @@ Isso acontece por conta de rotas internas as rotas como o create do users. Se o 
 
 ----------------------------------------------------------------------------------
 
-## Formilários no React
+## Formulários  no React
+
+Existem diversas maneiras de fazer formulários no React.
+
+1. Controlled Components
+
+    Quando é monitorado cada digitação dentro de um input e salva-se no estado.
+
+    ```typescript
+    const [search, setSearch] = useState<>('')
+
+    <Input
+      ...
+      value={search}
+      onChange={event => setSearch(event.target.value)}
+      />
+    ```
+
+2. Uncontrolled Components
+
+    São formas de acessar o valor somente quando precisar dele, acessa-se o valor quando é necessário por meio do `Ref`.
+    Como ele vai guardar uma **referencia** do elemento no DOM da aplicação, é preciso falar qual o tipo de ref esse
+    elemento pertence.
+
+    ```typescript
+    const searchInputRef = useRef<HTMLInputElement>(null)
+
+    <Input
+      ...
+      ref={searchInputRef}
+      />
+    ```
+
+    Passa-se um generic `<>` com o HTMLIputElement como propriedade.
+
+    Quando quiser acessar o conteúdo deste elemento basta-se usar o nomeDaConstante.current.value
+    Toda ref possui uma current (valor atual) e o value (o valor dela).
+
+Também existem algumas bibliotecas como o [Formik](https://formik.org/docs/overview), que é uma das mais utilizadas e também o [react hook forms](https://react-hook-form.com/get-started)
