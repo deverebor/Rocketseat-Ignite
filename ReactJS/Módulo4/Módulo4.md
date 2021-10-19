@@ -1061,10 +1061,6 @@ Também existem algumas bibliotecas como o [Formik](https://formik.org/docs/over
 
 ## Form de autenticação
 
-const { erros } = formState
-
-{...register('email)}
-
 Para instalar o React Hook Form usa-se:
 
 ```bash
@@ -1118,3 +1114,11 @@ const { register, handleSubmit, formState } = useForm()
 ```
 
 Usa-se uma constante para passar os dados porque dessa forma pode-se utilizar de um efeito visual de carregamento.
+
+----------------------------------------------------------------------------------
+
+## Validação dos dados
+
+>melhorar resumo
+
+Bibliotecas para validação de dados: Yup
