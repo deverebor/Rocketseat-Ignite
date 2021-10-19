@@ -959,32 +959,62 @@ A segunda é a prática da estrutura anteriormente explicada.
 
 Foi criado um novo contexto para a aplicação usando do de providers e conteúdos
 
-> melhorar depois esse resumo
-
 ----------------------------------------------------------------------------------
 
 ## Dashboard responsivo
 
-> melhorar depois esse resumo
+Esse conteúdo é simplesmente "HTML" no react.
 
 ----------------------------------------------------------------------------------
 
 ## Listagem responsivo
 
-> melhorar depois esse resumo
+Nada de novo.
 
 ----------------------------------------------------------------------------------
 
 ## Cadastro responsivo
 
-> melhorar depois esse resumo
+Nada de novo.
 
 ----------------------------------------------------------------------------------
 
 ## Fluxo de navegação
 
-> melhorar depois esse resumo
+Foi utilizado o Link do React para fazer a administração das novas rotas.
 
 ----------------------------------------------------------------------------------
 
 ## Sinalizando link ativo
+
+```typescript
+interface ActiveLinkProps extends LinkProps {
+  children: ReactElement,
+  shouldMatchExactHref?: boolean,
+}
+
+export function ActiveLink({ children, shouldMatchExactHref = false, ...rest }: ActiveLinkProps){
+  const { asPath } = useRouter()
+
+  let isActive = false
+
+  if(shouldMatchExactHref && (asPath === rest.href || asPath === rest.as)) {
+    isActive = true
+  }
+
+  if(!shouldMatchExactHref && (asPath.startsWith(String(rest.href)) || asPath.startsWith(String(rest.as)))) {
+    isActive = true
+  }
+```
+
+Foi utilizado de **duas** verificações para a usabilidade dos links ativos.
+
+1. Caso seja igual ao Path ou ao `shouldMatchExactHref` não a coloração não sera destacada.
+2. Caso não seja igual ao path que começa com uma rota já existente `users/create` por exemplo
+   Não mostrara o a coloração.
+
+Isso acontece por conta de rotas internas as rotas como o create do users. Se o usuário estiver em uma dessas rotas mostrará o conteúdo.
+
+----------------------------------------------------------------------------------
+
+## Formilários no React
