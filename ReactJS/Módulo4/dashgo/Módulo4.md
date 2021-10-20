@@ -1122,3 +1122,7 @@ Usa-se uma constante para passar os dados porque dessa forma pode-se utilizar de
 >melhorar resumo
 
 Bibliotecas para validação de dados: Yup
+
+----------------------------------------------------------------------------------
+
+## Form de validação do usuário
