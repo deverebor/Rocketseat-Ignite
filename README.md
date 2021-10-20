@@ -4,7 +4,7 @@
 
 ## Índice
 
-- [Módulo 1](/ReactJS/Módulo1/Módulo1.md)
-- [Módulo 2](/ReactJS/Módulo2/Módulo2.md)
-- [Módulo 3](/ReactJS/Módulo3/NextJS/Módulo3.md)
-- [Módulo 4](/ReactJS/Módulo4/Módulo4.md)
+- [Módulo 1](/ReactJS/Módulo1/01-github-explorer/Módulo1.md)
+- [Módulo 2](/ReactJS/Módulo2/dtmoney/Módulo2.md)
+- [Módulo 3](/ReactJS/Módulo3/NextJS/ignews/Módulo3.md)
+- [Módulo 4](/ReactJS/Módulo4/dashgo/Módulo4.md)
