@@ -1136,3 +1136,7 @@ Bibliotecas para validação de dados: Yup
 Data sync, quando se altera um dado na aplicação altera-se os dados armazenados no front
 
 Uma ferramenta para lidar com data fetching é o [React Query](https://react-query.tanstack.com/overview).
+
+----------------------------------------------------------------------------------
+
+## Configurando o MirageJS
