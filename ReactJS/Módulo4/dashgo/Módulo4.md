@@ -1130,3 +1130,9 @@ Bibliotecas para validação de dados: Yup
 ----------------------------------------------------------------------------------
 
 ## Data fetching no React
+
+É o armazenamento local no cache de requisições na aplicação. Não será necessário um loading ou algo do genero.
+
+Data sync, quando se altera um dado na aplicação altera-se os dados armazenados no front
+
+Uma ferramenta para lidar com data fetching é o [React Query](https://react-query.tanstack.com/overview).
