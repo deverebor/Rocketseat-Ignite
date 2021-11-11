@@ -1140,3 +1140,32 @@ Uma ferramenta para lidar com data fetching é o [React Query](https://react-que
 ----------------------------------------------------------------------------------
 
 ## Configurando o MirageJS
+
+Para instalar o MirageJS usa-se:
+
+  ```zsh
+  yarn add miragejs -D
+  ```
+
+Já qué existe uma api na aplicação é necessário fazer a verificação se a API é a do mirage ou a do proprío app.
+
+```typescript
+export function makeServer() {
+  const server = createServer({
+    models: {
+      user: Model.extend<Partial<User>>({})
+    },
+
+    routes() {
+      this.namespace = 'api'; // <-- namespace api.
+
+      this.get('/users');
+      this.post('/users');
+
+      this.namespace = ''; // resetando esse namespace.
+    }
+  });
+
+  return server;
+}
+```

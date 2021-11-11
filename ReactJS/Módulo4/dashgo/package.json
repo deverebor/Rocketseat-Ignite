@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "dev": "export NODE_OPTIONS=--openssl-legacy-provider; next dev",
+    "build": "export NODE_OPTIONS=--openssl-legacy-provider; next build",
+    "start": "export NODE_OPTIONS=--openssl-legacy-provider; next start",
+    "lint": "export NODE_OPTIONS=--openssl-legacy-provider; next lint"
   },
   "dependencies": {
     "@chakra-ui/core": "^0.8.0",
@@ -29,6 +29,7 @@
     "@types/react": "^17.0.27",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.2",
+    "miragejs": "^0.1.42",
     "typescript": "^4.4.3"
   }
 }
